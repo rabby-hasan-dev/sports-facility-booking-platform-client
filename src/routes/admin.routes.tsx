@@ -1,0 +1,50 @@
+import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
+import ViewAllBookings from "../pages/Dashboard/Admin/Bookings/ViewAllBookings";
+import CreateFacility from "../pages/Dashboard/Admin/Facility/CreateFacility";
+import Facility from "../pages/Dashboard/Admin/Facility/Facility";
+
+
+
+export const adminPaths = [
+
+    {
+        name: "Dashboard",
+        path: 'dashboard',
+        element: <AdminDashboard></AdminDashboard>,
+    },
+    {
+        name: "Facility Management",
+        children: [
+            {
+                name: "Create Facility",
+                path: 'create-facility',
+                element: <CreateFacility></CreateFacility>,
+            },
+            {
+                name: "Facility",
+                path: 'facility',
+                element: <Facility></Facility>,
+            },
+           
+
+
+        ]
+
+    },
+    {
+        name: "Booking Management",
+        children: [
+            {
+                name: "View All Bookings",
+                path: 'view-bookings-admin',
+                element: <ViewAllBookings></ViewAllBookings>,
+            },
+           
+
+        ]
+
+    },
+    
+    
+]
+

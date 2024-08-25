@@ -3,6 +3,10 @@ import App from "../App";
 import Login from "../pages/Auth/Login";
 import Registration from "../pages/Auth/Register";
 import NotFound from "../error/NotFound";
+import Dashboard from "../Layout/Dashboard";
+import { routeGenerators } from "../utils/routesGenerators";
+import { adminPaths } from "./admin.routes";
+import { userPaths } from "./user.routes";
 
 
 const router=createBrowserRouter([
@@ -10,6 +14,18 @@ const router=createBrowserRouter([
         path:"/",
         element:<App></App>,
         errorElement:<NotFound></NotFound>
+    },
+    {
+        path:"/admin",
+        element:<Dashboard></Dashboard>,
+        children:routeGenerators(adminPaths)
+        
+    },
+    {
+        path:"/user",
+        element:<Dashboard></Dashboard>,
+        children:routeGenerators(userPaths)
+        
     },
     {
         path:"/login",
