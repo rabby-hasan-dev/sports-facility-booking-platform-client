@@ -36,7 +36,7 @@ const Register = () => {
         <div className="bg-blue-400 h-screen" >
 
 
-            <Row justify={"center"} align={"middle"} defaultValues={defaultValues} >
+            <Row justify={"center"} align={"middle"}  >
                 <PForm onSubmit={onSubmit}>
                     <PInput name="name" label="Name" type="text"></PInput>
                     <PInput name="email" label="Email" type="text"></PInput>
