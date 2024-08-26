@@ -1,21 +1,13 @@
 
-import React, { useEffect, useState } from 'react';
+
 import { Button, Layout, Menu, theme } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { logOut, selectCurrentUser, TUser } from '../redux/features/auth/authSlice';
+import { logOut, selectCurrentUser,  } from '../redux/features/auth/authSlice';
+
 
 const { Header, Content, Footer } = Layout;
-// const [userRole,setUserRole]=useState<TUser|null>(null)
-//     console.log(userRole);
-// useEffect(()=>{
-//      const userRole=useAppSelector(selectCurrentUser);
-//      setUserRole(userRole);
-
-//  },[])
-
-// // console.log(userRole)
 
 const navItems = [
     {
@@ -46,6 +38,7 @@ const navItems = [
         key: 'Dashboard',
         label: <Link to='/dashboard' >Dashboard</Link>
     },
+   
 ]
 
 const MainLayout: React.FC = () => {

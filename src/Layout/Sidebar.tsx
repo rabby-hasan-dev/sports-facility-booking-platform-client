@@ -52,6 +52,7 @@ const Sidebar = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                borderRadius:'10px'
 
             }} >
                 <h1 className='text-xl' >Sports Facility </h1>

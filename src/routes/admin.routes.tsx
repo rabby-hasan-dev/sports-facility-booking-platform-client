@@ -2,6 +2,7 @@ import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboa
 import ViewAllBookings from "../pages/Dashboard/Admin/Bookings/ViewAllBookings";
 import CreateFacility from "../pages/Dashboard/Admin/Facility/CreateFacility";
 import Facility from "../pages/Dashboard/Admin/Facility/Facility";
+import PaymentInfoAdmin from "../pages/Dashboard/Admin/Payment/PaymentInfoAdmin";
 
 
 
@@ -43,6 +44,11 @@ export const adminPaths = [
 
         ]
 
+    },
+    {
+        name: "Payment",
+        path: 'payment-info',
+        element: <PaymentInfoAdmin></PaymentInfoAdmin>,
     },
     
     

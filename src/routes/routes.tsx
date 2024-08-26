@@ -8,9 +8,7 @@ import { routeGenerators } from "../utils/routesGenerators";
 import { adminPaths } from "./admin.routes";
 import { userPaths } from "./user.routes";
 import { homeRoutes } from "./home.routes";
-
-
-
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,17 +19,22 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element:<Dashboard></Dashboard>
+        
     },
     {
         path: "/admin",
-        element: <Dashboard></Dashboard>,
+        element: <ProtectedRoute role="admin">
+            <Dashboard></Dashboard>
+        </ProtectedRoute>,
         children: routeGenerators(adminPaths)
 
     },
     {
         path: "/user",
-        element: <Dashboard></Dashboard>,
+        element: <ProtectedRoute role="user">
+            <Dashboard></Dashboard>
+        </ProtectedRoute>,
         children: routeGenerators(userPaths)
 
     },
