@@ -12,7 +12,7 @@ const { Sider } = Layout;
 
 const Sidebar = () => {
     const token = useAppSelector(useCurrentToken);
-
+    
     let user;
     
     if (token) {
@@ -20,11 +20,13 @@ const Sidebar = () => {
     }
  
   
-    const role = "admin";
+    // const role = "admin";
     // const role = "user";
     let sidebarItems;
 
-    switch (role) {
+ 
+
+    switch ((user as TUser)?.role) {
         case USER_ROLE.admin:
             sidebarItems = sidebarItemsGenerator(adminPaths, USER_ROLE.admin);
             break;
@@ -34,6 +36,8 @@ const Sidebar = () => {
         default:
             break;
     }
+
+
 
 
     return (
@@ -50,7 +54,7 @@ const Sidebar = () => {
                 alignItems: "center",
 
             }} >
-                <h1 className='text-xl' >Sports Facility Booking Platform</h1>
+                <h1 className='text-xl' >Sports Facility </h1>
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>

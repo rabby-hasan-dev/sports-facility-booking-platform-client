@@ -3,7 +3,7 @@
 const Bookings = () => {
     return (
         <div>
-            View bookings user
+            Bookings Component
         </div>
     );
 };

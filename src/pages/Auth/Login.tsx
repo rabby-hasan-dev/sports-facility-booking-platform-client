@@ -5,11 +5,13 @@ import { Button, Row } from "antd";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Login = () => {
+    const navigate=useNavigate()
 
     const [login] = useLoginMutation();
     const dispatch = useAppDispatch();
@@ -30,7 +32,7 @@ const Login = () => {
 
             const res = await login(userInfo).unwrap();
             dispatch(setUser({ user: res.data, token: res.token }));
-            console.log(res);
+           navigate('/')
 
         } catch (error) {
 

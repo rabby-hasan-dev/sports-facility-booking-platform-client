@@ -7,33 +7,41 @@ import Dashboard from "../Layout/Dashboard";
 import { routeGenerators } from "../utils/routesGenerators";
 import { adminPaths } from "./admin.routes";
 import { userPaths } from "./user.routes";
+import { homeRoutes } from "./home.routes";
 
 
-const router=createBrowserRouter([
+
+
+const router = createBrowserRouter([
     {
-        path:"/",
-        element:<App></App>,
-        errorElement:<NotFound></NotFound>
+        path: "/",
+        element: <App></App>,
+        errorElement: <NotFound></NotFound>,
+        children: homeRoutes
     },
     {
-        path:"/admin",
-        element:<Dashboard></Dashboard>,
-        children:routeGenerators(adminPaths)
-        
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
     },
     {
-        path:"/user",
-        element:<Dashboard></Dashboard>,
-        children:routeGenerators(userPaths)
-        
+        path: "/admin",
+        element: <Dashboard></Dashboard>,
+        children: routeGenerators(adminPaths)
+
     },
     {
-        path:"/login",
-        element:<Login></Login>
+        path: "/user",
+        element: <Dashboard></Dashboard>,
+        children: routeGenerators(userPaths)
+
     },
     {
-        path:"/register",
-        element:<Registration></Registration>
+        path: "/login",
+        element: <Login></Login>
+    },
+    {
+        path: "/register",
+        element: <Registration></Registration>
     }
 ])
 
