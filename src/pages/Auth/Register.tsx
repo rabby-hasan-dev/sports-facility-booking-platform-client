@@ -9,16 +9,15 @@ import { useSignupMutation } from "../../redux/features/auth/authApi";
 const Register = () => {
     const [signUp] = useSignupMutation()
 
-    const defaultValues = [
-        {
-            name: "Programming Hero",
-            email: "web@programming-hero1.com",
-            password: "programming-hero",
-            phone: "01322901105",
-            // role: "user",
-            address: "Level-4, 34, Awal Centre, Banani, Dhaka"
-        }
-    ]
+    // const defaultValues = {
+    //     name: "Programming Hero",
+    //     email: "web@programming-hero1.com",
+    //     password: "programming-hero",
+    //     phone: "01322901105",
+    //     // role: "user",
+    //     address: "Level-4, 34, Awal Centre, Banani, Dhaka"
+    // }
+
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const signUpData = {
@@ -39,7 +38,7 @@ const Register = () => {
 
 
             <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit} defaultValues={defaultValues }>
+                <PForm onSubmit={onSubmit} >
                     <PInput name="name" label="Name" type="text"></PInput>
                     <PInput name="email" label="Email" type="text"></PInput>
                     <PInput name="password" label="Password" type="text"></PInput>

@@ -2,6 +2,7 @@ import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboa
 import ViewAllBookings from "../pages/Dashboard/Admin/Bookings/ViewAllBookings";
 import CreateFacility from "../pages/Dashboard/Admin/Facility/CreateFacility";
 import Facility from "../pages/Dashboard/Admin/Facility/Facility";
+import UpdateFacility from "../pages/Dashboard/Admin/Facility/UpdateFacility";
 import PaymentInfoAdmin from "../pages/Dashboard/Admin/Payment/PaymentInfoAdmin";
 import CreateAdmin from "../pages/Dashboard/Admin/UserManagement/CreateAdmin";
 
@@ -22,12 +23,17 @@ export const adminPaths = [
                 path: 'create-facility',
                 element: <CreateFacility></CreateFacility>,
             },
+
+            {
+                path: 'facility/:id',
+                element: <UpdateFacility></UpdateFacility>,
+            },
             {
                 name: "Facility",
                 path: 'facility',
                 element: <Facility></Facility>,
             },
-           
+
 
 
         ]
@@ -41,7 +47,7 @@ export const adminPaths = [
                 path: 'view-bookings-admin',
                 element: <ViewAllBookings></ViewAllBookings>,
             },
-           
+
 
         ]
 
@@ -56,7 +62,7 @@ export const adminPaths = [
         path: 'create-admin',
         element: <CreateAdmin></CreateAdmin>,
     },
-    
-    
+
+
 ]
 

@@ -1,19 +1,27 @@
+
 import { Button, Form, Input, Row } from "antd";
+
+import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
+import { useGetAllFacilityQuery, useUpdateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
+import { uploadImage } from "../../../../utils/imageUploader";
 import PForm from "../../../../components/form/PForm";
 import PInput from "../../../../components/form/PInput";
-import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
-import { useCreateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
-import { uploadImage } from "../../../../utils/imageUploader";
+import { useParams } from "react-router-dom";
 
 
-const CreateFacility = () => {
-    
-    const [createFacility] = useCreateFacilityMutation();
+const UpdateFacility = () => {
+    const { id } = useParams();
+    const [updateFacility] = useUpdateFacilityMutation();
+    const { data: facility } = useGetAllFacilityQuery(undefined, { skip: !id });
+
+    const findSingleFacility = facility?.data?.find((item) => item._id === id);
+ 
+
+  
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const img = await uploadImage(data?.image);
-
 
         const facilityInfo = {
             ...data,
@@ -22,9 +30,9 @@ const CreateFacility = () => {
         }
 
         try {
-            const res = await createFacility(facilityInfo);
+            const res = await updateFacility(facilityInfo);
             console.log(res);
-        }catch(error){
+        } catch (error) {
 
             console.log(error);
         }
@@ -39,9 +47,11 @@ const CreateFacility = () => {
 
     return (
         <div>
-              <h1 className="text-center text-5xl font-semibold mb-10 ">Create Facility</h1>
+
+            <h1 className="text-center text-5xl font-semibold mb-10 ">Update Facility</h1>
+
             <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit}>
+                <PForm onSubmit={onSubmit} defaultValues={findSingleFacility}>
                     <PInput name="name" label="Name" type="text"></PInput>
                     <PInput name="description" label="Description" type="text"></PInput>
                     <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>
@@ -64,7 +74,7 @@ const CreateFacility = () => {
                     />
 
 
-                    <Button htmlType="submit">Create Facility</Button>
+                    <Button htmlType="submit">Update Facility</Button>
                 </PForm>
             </Row>
 
@@ -72,4 +82,4 @@ const CreateFacility = () => {
     );
 };
 
-export default CreateFacility;
+export default UpdateFacility;
