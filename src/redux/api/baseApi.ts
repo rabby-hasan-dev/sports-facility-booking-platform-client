@@ -28,13 +28,15 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType> = async (arg, api, extraOptions): Promise<any> => {
 
     let result = await baseQuery(arg, api, extraOptions);
-  
+    
+    console.log('base api inside ==>', result)
 
     if(result.error?.status ===404){
         console.log(result.error.data.message)
       
         
     }
+
     if(result.error?.status ===403){
         console.log(result.error.data.message)
     }
@@ -45,6 +47,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, Definition
             method: "POST",
         });
         const data = await res.json();
+
+        console.log('retrive refresh token', data);
 
         if (data?.data?.accessToken) {
 

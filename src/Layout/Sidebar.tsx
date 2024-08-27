@@ -6,6 +6,7 @@ import { USER_ROLE } from '../constant/userConstant';
 import { TUser, useCurrentToken } from '../redux/features/auth/authSlice';
 import { useAppSelector } from '../redux/hooks';
 import { verifyToken } from '../utils/verifyToken';
+import { Link } from 'react-router-dom';
 
 const { Sider } = Layout;
 
@@ -55,7 +56,7 @@ const Sidebar = () => {
                 borderRadius:'10px'
 
             }} >
-                <h1 className='text-xl' >Sports Facility </h1>
+               <Link to='/' > <h1 className='text-xl' >Sports Facility </h1></Link>
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>

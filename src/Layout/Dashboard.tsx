@@ -24,9 +24,8 @@ const Dashboard = () => {
                 <Sidebar></Sidebar>
                 <Layout>
                     <Header style={{ padding: 0, background: colorBgContainer }} >
-                      <Link to='/' > 
-                      <Button>Home</Button>
-                      </Link>
+                     {/* Do something style */}
+
                     </Header>
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div
