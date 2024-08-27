@@ -2,7 +2,7 @@
 
 
 import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
-import { useState } from "react";
+
 import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
 import { Link } from "react-router-dom";
 

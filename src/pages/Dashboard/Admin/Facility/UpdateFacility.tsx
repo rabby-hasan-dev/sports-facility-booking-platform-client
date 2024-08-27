@@ -30,7 +30,7 @@ const UpdateFacility = () => {
         }
 
         try {
-            const res = await updateFacility(facilityInfo);
+            const res = await updateFacility({id, data:facilityInfo});
             console.log(res);
         } catch (error) {
 

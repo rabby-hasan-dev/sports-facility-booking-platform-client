@@ -1,20 +1,20 @@
 import { baseApi } from "../../api/baseApi";
 
 
-const facilityApi=baseApi.injectEndpoints({
+const facilityApi = baseApi.injectEndpoints({
 
     endpoints: (builder) => ({
-        
+
         getAllFacility: builder.query({
             query: () => ({
                 url: "/facility",
                 method: "GET",
 
             }),
-            providesTags:['facility']
+            providesTags: ['facility']
 
         }),
-        
+
         createFacility: builder.mutation({
             query: (data) => ({
                 url: "/facility",
@@ -22,25 +22,28 @@ const facilityApi=baseApi.injectEndpoints({
                 body: data,
 
             }),
-            invalidatesTags:['facility']
+            invalidatesTags: ['facility']
         }),
         updateFacility: builder.mutation({
-            query: (args) => ({
-                url: `/facility/${args.id}`,
-                method: "PUT",
-                body: args.data,
+            query: (args) => {
 
-            }),
-            invalidatesTags:['facility']
+                return {
+                    url: `/facility/${args.id}`,
+                    method: "PUT",
+                    body: args.data,
+                }
+
+            },
+            invalidatesTags: ['facility']
         }),
-       deleteSingleFacility: builder.mutation({
+        deleteSingleFacility: builder.mutation({
             query: (id) => ({
                 url: `/facility/${id}`,
                 method: "DELETE",
-               
+
 
             }),
-            invalidatesTags:['facility']
+            invalidatesTags: ['facility']
         })
 
 
@@ -49,8 +52,8 @@ const facilityApi=baseApi.injectEndpoints({
 
 
 export const {
-   useGetAllFacilityQuery,
+    useGetAllFacilityQuery,
     useCreateFacilityMutation,
     useUpdateFacilityMutation,
     useDeleteSingleFacilityMutation
-}=facilityApi;
+} = facilityApi;
