@@ -5,11 +5,12 @@ type TInputProps = {
     name: string;
     type: string;
     label?: string;
-    disabled?:boolean
+    disabled?:boolean,
+    placeholder?:string,
 }
 
 
-const PInput = ({ name, type, label , disabled}: TInputProps) => {
+const PInput = ({ name, type, label , disabled,placeholder}: TInputProps) => {
 
     return (
         <div style={{ marginBottom: '20px' }}>
@@ -19,7 +20,7 @@ const PInput = ({ name, type, label , disabled}: TInputProps) => {
                 name={name}
                 render={({ field }) =>(
                     <Form.Item label={label} >
-                        <Input className="border" {...field} type={type} id={name} disabled={disabled} />
+                        <Input className="border" {...field} type={type} id={name} placeholder={placeholder} disabled={disabled} />
                     </Form.Item>
                 ) }
 

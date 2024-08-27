@@ -5,11 +5,13 @@ import { Form } from "antd";
 type TPropsForm = {
     onSubmit: SubmitHandler<FieldValues>;
     children: ReactNode;
+    ref?:any;
 
 } & TFormCofing
 
 type TFormCofing = {
     defaultValues?: Record<string, any>;
+    
 
 }
 
@@ -17,7 +19,7 @@ type TFormCofing = {
 
 
 
-const PForm = ({ onSubmit, children, defaultValues }: TPropsForm) => {
+const PForm = ({ onSubmit, children, defaultValues, ref }: TPropsForm) => {
     const methods = useForm();
 
     const formConfig: TFormCofing = {};
@@ -34,7 +36,7 @@ const PForm = ({ onSubmit, children, defaultValues }: TPropsForm) => {
 
     return (
         <FormProvider  {...methods}>
-            <Form layout="vertical" onFinish={methods.handleSubmit(submitFormData)}> {children} </Form>
+            <Form ref={ref} layout="vertical" initialValues={defaultValues}  onFinish={methods.handleSubmit(submitFormData)}> {children} </Form>
         </FormProvider>
     );
 };
