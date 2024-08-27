@@ -1,7 +1,7 @@
 
 
 
-import { Button, Dropdown, Flex, Row, Space, Table, TableColumnsType, Tag, } from "antd";
+import { Button,  Space, Table, TableColumnsType, Tag, } from "antd";
 import { useState } from "react";
 import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
 
@@ -11,24 +11,6 @@ import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../.
 // export type TTableData = Pick< , 'status' | 'startDate' | 'endDate'>
 
 
-const items = [
-
-    {
-        label: 'UPCOMING',
-        key: 'UPCOMING',
-
-    },
-    {
-        label: 'ONGOING',
-        key: 'ONGOING',
-
-    },
-    {
-        label: 'ENDED',
-        key: 'ENDED',
-
-    },
-]
 
 
 
