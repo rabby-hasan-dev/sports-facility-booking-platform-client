@@ -3,55 +3,31 @@ import PForm from "../../../../components/form/PForm";
 import PInput from "../../../../components/form/PInput";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { useCreateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
-const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
-
-
+import { uploadImage } from "../../../../utils/imageUploader";
 
 
 const CreateFacility = () => {
-    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+    
     const [createFacility] = useCreateFacilityMutation();
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        const img = await uploadImage(data?.image);
 
-        // let images;
 
-        // image uploader
-        const formData = new FormData();
-        formData.append('image', data?.image)
+        const facilityInfo = {
+            ...data,
+            pricePerHour: Number(data.pricePerHour),
+            image: img
+        }
 
         try {
-            const res = await fetch(img_hosting_url, {
-                method: 'POST',
-                body: formData,
-
-            });
-            const imgResponse = await res.json();
-            if (imgResponse.success) {
-                const imgURL = imgResponse.data.display_url;
-                // images = imgURL;
-                const facilityInfo = {
-                    ...data,
-                    pricePerHour: Number(data.pricePerHour),
-                    image: imgURL
-                }
-                console.log(facilityInfo)
-                const res = await createFacility(facilityInfo);
-                console.log(res);
-
-            }
-        } catch (error) {
+            const res = await createFacility(facilityInfo);
+            console.log(res);
+        }catch(error){
 
             console.log(error);
         }
-
-
-
-
-
-
-
 
 
 
