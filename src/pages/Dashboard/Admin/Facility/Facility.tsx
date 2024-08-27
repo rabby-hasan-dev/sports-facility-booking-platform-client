@@ -3,7 +3,7 @@
 
 import { Button, Dropdown, Flex, Row, Space, Table, TableColumnsType, Tag, } from "antd";
 import { useState } from "react";
-import { useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
+import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
 
 
 
@@ -37,6 +37,7 @@ const Facility = () => {
     const [facilityId, setFacilityId] = useState('')
 
     const {data:allFacily, isFetching}=useGetAllFacilityQuery(undefined);
+    const [deleteFacility]=useDeleteSingleFacilityMutation();
  
     const tableData = allFacily?.data?.map(({ _id, name, description, pricePerHour, location }) => ({
         key: _id,
@@ -78,7 +79,8 @@ const Facility = () => {
                   
                        <Space size={4} >
                        <Button onClick={() => setFacilityId(item.key)} > update</Button>
-                       <Button > Delete</Button>
+                       <Button onClick={() => deleteFacility(item.key)} >Delete</Button>
+                       
                        </Space>
                    
                 )
