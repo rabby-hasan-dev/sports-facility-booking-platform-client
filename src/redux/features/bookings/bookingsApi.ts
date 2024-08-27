@@ -12,7 +12,8 @@ const bookingsApi=baseApi.injectEndpoints({
                 url: "/bookings",
                 method: "GET",
 
-            })
+            }),
+            providesTags:['bookings']
         }),
         
         getAllBookingsByUser: builder.query({
@@ -20,7 +21,8 @@ const bookingsApi=baseApi.injectEndpoints({
                 url: "/bookings/user",
                 method: "GET",
 
-            })
+            }),
+            providesTags:['bookings']
         }),
         
         createBookings: builder.mutation({
@@ -29,7 +31,8 @@ const bookingsApi=baseApi.injectEndpoints({
                 method: "POST",
                 body: data,
 
-            })
+            }),
+            invalidatesTags:['bookings']
         }),
        
        deleteSingleBookings: builder.mutation({
@@ -38,7 +41,8 @@ const bookingsApi=baseApi.injectEndpoints({
                 method: "DELETE",
                
 
-            })
+            }),
+            invalidatesTags:['bookings']
         }),
        bookingChecker: builder.query({
             query: (args) => ({
@@ -47,7 +51,8 @@ const bookingsApi=baseApi.injectEndpoints({
                 params:args
                
 
-            })
+            }),
+            
         })
 
 
