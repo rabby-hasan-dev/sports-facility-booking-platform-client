@@ -4,13 +4,15 @@ import { baseApi } from "../../api/baseApi";
 const facilityApi=baseApi.injectEndpoints({
 
     endpoints: (builder) => ({
-
+        
         getAllFacility: builder.query({
             query: () => ({
                 url: "/facility",
                 method: "GET",
 
-            })
+            }),
+            providesTags:['facility']
+
         }),
         
         createFacility: builder.mutation({
@@ -19,7 +21,8 @@ const facilityApi=baseApi.injectEndpoints({
                 method: "POST",
                 body: data,
 
-            })
+            }),
+            invalidatesTags:['facility']
         }),
         updateFacility: builder.mutation({
             query: (args) => ({
@@ -27,7 +30,8 @@ const facilityApi=baseApi.injectEndpoints({
                 method: "PUT",
                 body: args.data,
 
-            })
+            }),
+            invalidatesTags:['facility']
         }),
        deleteSingleFacility: builder.mutation({
             query: (id) => ({
@@ -35,7 +39,8 @@ const facilityApi=baseApi.injectEndpoints({
                 method: "DELETE",
                
 
-            })
+            }),
+            invalidatesTags:['facility']
         })
 
 

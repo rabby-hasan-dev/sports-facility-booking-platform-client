@@ -41,7 +41,7 @@ const CreateFacility = () => {
         <div>
 
             <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit} >
+                <PForm onSubmit={onSubmit}>
                     <PInput name="name" label="Name" type="text"></PInput>
                     <PInput name="description" label="Description" type="text"></PInput>
                     <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>
