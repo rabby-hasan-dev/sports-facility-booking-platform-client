@@ -48,14 +48,21 @@ const HomeFacility = () => {
 
 
 
-    console.log(allFacility); 
+    console.log(allFacility);
 
     return (
-        <div className="space-y-10">
+        <div className="space-y-8">
+              <div className="space-y-3 text-center ">
+                    <h2 className="text-3xl font-extrabold text-gray-900"> Entire Facilities</h2>
+                    <p className="text-lg text-gray-600 ">Discover and book from our selection of entire facilities.</p>
+
+                </div>
             <div className="flex justify-between  items-center ">
                 <div>
                     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
                 </div>
+
+
                 <Dropdown menu={menuProps} trigger={['click']} >
                     <Button onClick={() => handleMenuClick}>
                         <Space>

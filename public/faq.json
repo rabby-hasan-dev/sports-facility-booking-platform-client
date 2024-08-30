@@ -1,0 +1,23 @@
+[
+    {
+      "question": "How do I sign up for a membership?",
+      "answer": "Signing up is easy! Just click on the 'SignUp' button on our homepage and fill in the required details. Once you've completed the registration, you'll receive a confirmation email, and you can start enjoying the perks immediately."
+    },
+    {
+      "question": "What does a membership cost?",
+      "answer": "Our membership plans vary based on the level of access and benefits you choose. We offer monthly and annual plans, with discounts for long-term commitments. Please visit our pricing page for detailed information."
+    },
+    {
+      "question": "How are the perks redeemed?",
+      "answer": "Perks are automatically applied to your account. For example, if you're eligible for a discount, it will be deducted during the booking process. Reward points can be redeemed at checkout, and priority booking is reflected in your booking dashboard."
+    },
+  
+    {
+      "question": "Are there any additional benefits for long-term members?",
+      "answer": "Absolutely! Long-term members receive additional perks such as higher discounts, exclusive offers, and early access to new features. The longer you're with us, the more benefits you unlock."
+    },
+    {
+      "question": "How i can the procedure be followed for booking? ",
+      "answer": "Please! Look at our landing page for visual booking procedure"
+    }
+  ]

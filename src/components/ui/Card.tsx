@@ -6,13 +6,14 @@ const { Meta } = Card;
 type TCardProps = {
     image: string;
     name: string;
-    pricePerHour: string;
+    pricePerHour?: string;
     id: string;
-    loading:any
+    loading: any;
+    description?: string;
 }
 
 
-const CardComponent = ({ id,loading, image, name, pricePerHour }: TCardProps) => {
+const CardComponent = ({ id, loading, image, name, pricePerHour, description }: TCardProps) => {
     return (
         <>
             <Card
@@ -21,8 +22,15 @@ const CardComponent = ({ id,loading, image, name, pricePerHour }: TCardProps) =>
                 style={{ width: 240 }}
                 cover={<img alt="Facility_image" src={image} />}
             >
-                <Meta title={`Name: ${name}`} description={`Price PerHour: ${pricePerHour}`} />
-                <Link to={`/facilities/${id}`} ><Button>View Details</Button></Link>
+                {
+                    description ? <Meta title={`Name: ${name}`} description={description} />
+                        : <Meta title={`Name: ${name}`} description={`Price PerHour: ${pricePerHour}`} />
+
+                }
+              {
+                description?  <Link to={`/facilities`} ><Button>Book Now</Button></Link>
+                :  <Link to={`/facilities/${id}`} ><Button>View Details</Button></Link>
+              }
             </Card>
         </>
     );

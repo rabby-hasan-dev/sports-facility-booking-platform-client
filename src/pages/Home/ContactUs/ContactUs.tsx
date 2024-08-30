@@ -7,8 +7,9 @@ const ContactUs = () => {
 
             {/* Conatct Form */}
             <div className="text-center">
-                <h1 className="text-6xl font-medium  my-4">Contact Us</h1>
-                <p className="text-xl text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dignissimos maiores, animi ullam adipisci a consectetur, esse molestias, aliquid fugit minima suscipit nobis amet nostrum tenetur earum ad numquam. Cupiditate.</p>
+                <h2 className="text-4xl font-extrabold  my-4">Contact Us</h2>
+                <p className="text-lg text-center">Whether you have a question about bookings, need assistance with our platform, or just want to give feedback, our team is ready to assist you. <br />
+                    Reach out to us through any of the channels below, and we’ll get back to you as soon as possible.</p>
                 <div>
                     <ContactForm></ContactForm>
                 </div>
@@ -17,7 +18,7 @@ const ContactUs = () => {
             {/* map component */}
             <div className="space-y-10 text-center">
 
-                <h1 className="text-6xl font-medium">Get in touch with Osome</h1>
+                <h2 className="text-4xl font-extrabold">Get in touch with Osome</h2>
 
                 <div className="lg:flex justify-around items-center space-y-3" >
 

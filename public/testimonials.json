@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "designation": "CEO, Acme Corp",
+      "text": "This platform has transformed the way we book sports facilities. The process is seamless and the customer service is outstanding!",
+      "image": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "designation": "Fitness Enthusiast",
+      "text": "Booking a gym session has never been easier! I love how convenient and user-friendly the platform is.",
+      "image": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Jane Smith",
+      "designation": "Fitness Enthusiast",
+      "text": "Booking a gym session has never been easier! I love how convenient and user-friendly the platform is.",
+      "image": "https://randomuser.me/api/portraits/women/44.jpg"
+    }
+  ]
