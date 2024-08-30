@@ -1,4 +1,4 @@
-import { Button, Dropdown, GetProps, Input, MenuProps, Space } from "antd";
+import { Button, Dropdown, GetProps, Input, MenuProps, Pagination, Space } from "antd";
 import Card from "../../../components/ui/Card";
 import { useGetAllFacilityQuery } from "../../../redux/features/facility/facilityApi";
 const { Search } = Input;
@@ -38,15 +38,23 @@ const menuProps = {
 
 const HomeFacility = () => {
 
-    const { data: allFacility,isFetching } = useGetAllFacilityQuery(undefined);
+    const { data: allFacility, isFetching } = useGetAllFacilityQuery(undefined);
     const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 
+    const handlePage = (data) => {
+        console.log('pagination ==>', data);
+
+    }
+
+
+
+    console.log(allFacility); 
 
     return (
         <div className="space-y-10">
             <div className="flex justify-between  items-center ">
                 <div>
-                <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
+                    <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
                 </div>
                 <Dropdown menu={menuProps} trigger={['click']} >
                     <Button onClick={() => handleMenuClick}>
@@ -64,6 +72,10 @@ const HomeFacility = () => {
                 {
                     allFacility?.data?.map((item) => <Card loading={isFetching} key={item._id} id={item._id} name={item.name} image={item.image} pricePerHour={item.pricePerHour} ></Card>)
                 }
+            </div>
+
+            <div>
+                <Pagination onChange={(value) => handlePage(value)} align="center" pageSize={3} defaultCurrent={1} total={10} />;
             </div>
 
         </div>

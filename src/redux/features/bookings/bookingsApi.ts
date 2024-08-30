@@ -1,9 +1,11 @@
+
+import { TQueryParamsBookingsChecker } from "../../../pages/Home/Bookings/Bookings";
 import { baseApi } from "../../api/baseApi";
 
 
 
 
-const bookingsApi=baseApi.injectEndpoints({
+const bookingsApi = baseApi.injectEndpoints({
 
     endpoints: (builder) => ({
 
@@ -13,18 +15,18 @@ const bookingsApi=baseApi.injectEndpoints({
                 method: "GET",
 
             }),
-            providesTags:['bookings']
+            providesTags: ['bookings']
         }),
-        
+
         getAllBookingsByUser: builder.query({
             query: () => ({
                 url: "/bookings/user",
                 method: "GET",
 
             }),
-            providesTags:['bookings']
+            providesTags: ['bookings']
         }),
-        
+
         createBookings: builder.mutation({
             query: (data) => ({
                 url: "/bookings",
@@ -32,27 +34,38 @@ const bookingsApi=baseApi.injectEndpoints({
                 body: data,
 
             }),
-            invalidatesTags:['bookings']
+            invalidatesTags: ['bookings']
         }),
-       
-       deleteSingleBookings: builder.mutation({
+
+        deleteSingleBookings: builder.mutation({
             query: (id) => ({
                 url: `/bookings/${id}`,
                 method: "DELETE",
-               
+
 
             }),
-            invalidatesTags:['bookings']
+            invalidatesTags: ['bookings']
         }),
-       bookingChecker: builder.query({
-            query: (args) => ({
-                url: `/check-availability`,
-                method: "GET",
-                params:args
-               
+        bookingChecker: builder.query({
+            query: (args) => {       
+                  const params = new URLSearchParams();              
+                if (args) {
+                    args.forEach((item:TQueryParamsBookingsChecker ) => {
+                        params.append(item.name, item.value as string)
+                       
+                    })
+                }
 
-            }),
-            
+               
+                return {
+                    url: `/check-availability`,
+                    method: "GET",
+                    params:params
+
+
+                }
+            },
+
         })
 
 
@@ -61,9 +74,9 @@ const bookingsApi=baseApi.injectEndpoints({
 
 
 export const {
-   useGetAllBookingsByAdminQuery,
-   useGetAllBookingsByUserQuery,
-   useCreateBookingsMutation,
-   useDeleteSingleBookingsMutation,
-   useBookingCheckerQuery
-}=bookingsApi;
+    useGetAllBookingsByAdminQuery,
+    useGetAllBookingsByUserQuery,
+    useCreateBookingsMutation,
+    useDeleteSingleBookingsMutation,
+    useBookingCheckerQuery
+} = bookingsApi;

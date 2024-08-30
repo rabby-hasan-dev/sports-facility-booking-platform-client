@@ -12,6 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@reduxjs/toolkit": "^2.2.7",
+    "@xyflow/react": "^12.2.0",
     "antd": "^5.20.2",
     "jwt-decode": "^4.0.0",
     "moment": "^2.30.1",

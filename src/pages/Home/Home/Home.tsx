@@ -1,9 +1,13 @@
+import HeroSection from "./HeroSection/HeroSection";
+import WorkFlow from "./WorkFlow/WorkFlow";
 
 
 const Home = () => {
     return (
-        <div>
-            Home Component
+        <div >
+            
+            <HeroSection></HeroSection>
+            <WorkFlow></WorkFlow>
         </div>
     );
 };

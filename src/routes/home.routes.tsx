@@ -6,50 +6,61 @@ import FacilityDetails from "../pages/Home/Facility/FacilityDetails";
 import HomeFacility from "../pages/Home/Facility/HomeFacility";
 
 import Home from "../pages/Home/Home/Home";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 
-export   const homeRoutes=[
+export const homeRoutes = [
     {
 
-    path:"/",
-    element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
 
     },
     {
 
-    path:"aboutUs",
-    element:<AboutUs></AboutUs>
+        path: "aboutUs",
+        element: <AboutUs></AboutUs>
 
     },
     {
 
-    path:"contactUs",
-    element:<ContactUs></ContactUs>
+        path: "contactUs",
+        element: <ContactUs></ContactUs>
 
     },
     {
 
-    path:"bookings",
-    element:<Bookings></Bookings>
+        path: "bookings",
+        element: <ProtectedRoute role="user">
+            <Bookings></Bookings>
+        </ProtectedRoute>
 
     },
     {
 
-    path:"facilities",
-    element:<HomeFacility></HomeFacility>
+        path: "bookings/:facilityId",
+        element: <ProtectedRoute role="user">
+            <Bookings></Bookings>
+        </ProtectedRoute>
 
     },
     {
 
-    path:"facilities/:id",
-    element:<FacilityDetails></FacilityDetails>
+        path: "facilities",
+        element: <HomeFacility></HomeFacility>
 
     },
     {
 
-    path:"bookings-checker",
-    element:<BookingChecker></BookingChecker>
+        path: "facilities/:id",
+        element: <FacilityDetails></FacilityDetails>
+
+    },
+    {
+
+        path: "bookings-checker",
+        element: <BookingChecker></BookingChecker>
 
     },
 ]

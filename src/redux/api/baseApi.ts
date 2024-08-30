@@ -29,7 +29,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, Definition
 
     let result = await baseQuery(arg, api, extraOptions);
     
-    console.log('base api inside ==>', result)
+    // console.log('base api inside ==>', result)
 
     if(result.error?.status ===404){
         console.log(result.error.data.message)

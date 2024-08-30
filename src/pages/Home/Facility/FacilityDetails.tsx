@@ -1,5 +1,5 @@
 import { Button, Card, Image } from "antd";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetAllFacilityQuery } from "../../../redux/features/facility/facilityApi";
 
 
@@ -36,7 +36,7 @@ const FacilityDetails = () => {
                         <p className="text-xl font-bold">$ {singleFacility?.pricePerHour} </p>
                         <p>{singleFacility?.description} </p>
 
-                        <Button>Book Now</Button>
+                        <Link to={`/bookings/${id}`} ><Button>Book Now</Button></Link>
                     </div>
                 </Card>
 

@@ -4,7 +4,7 @@ import { Button, Layout, Menu, theme } from 'antd';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { logOut, selectCurrentUser,  } from '../redux/features/auth/authSlice';
+import { logOut, selectCurrentUser, } from '../redux/features/auth/authSlice';
 
 
 const { Header, Content, Footer } = Layout;
@@ -14,6 +14,12 @@ const navItems = [
         key: 'Home',
         label: <Link to='/' >Home</Link>
     },
+
+    {
+        key: 'Facility',
+        label: <Link to='/Facilities' >Facility</Link>
+    },
+
     {
         key: 'ContactUs',
         label: <Link to='/contactUs' >Contact Us</Link>
@@ -23,27 +29,26 @@ const navItems = [
         label: <Link to='/aboutUs' >About Us</Link>
     },
     {
-        key: 'Bookings',
-        label: <Link to='/bookings' >Bookings</Link>
-    },
-    {
-        key: 'Facility',
-        label: <Link to='/Facilities' >Facility</Link>
-    },
-    {
-        key: 'BookingChecker',
-        label: <Link to='/bookings-checker' >Booking Checker</Link>
-    },
-    {
         key: 'Dashboard',
         label: <Link to='/dashboard' >Dashboard</Link>
     },
-   
+
+    // {
+    //     key: 'BookingChecker',
+    //     label: <Link to='/bookings-checker' >Booking Checker</Link>
+    // },
+
+    // {
+    //     key: 'Bookings',
+    //     label: <Link to='/bookings' >Bookings</Link>
+    // },
+
+
 ]
 
 const MainLayout: React.FC = () => {
     const user = useAppSelector(selectCurrentUser);
-    const dispatch=useAppDispatch();
+    const dispatch = useAppDispatch();
     const {
         token: { colorBgContainer, },
     } = theme.useToken();
@@ -65,10 +70,10 @@ const MainLayout: React.FC = () => {
                     style={{ flex: 1, minWidth: 0, justifyContent: 'center' }}
                 />
                 {
-                    user ? <Button onClick={()=>dispatch(logOut())} >Logout</Button> : 
-                    <Link to='/login' >
-                        <Button>Login </Button>
-                    </Link>
+                    user ? <Button onClick={() => dispatch(logOut())} >Logout</Button> :
+                        <Link to='/login' >
+                            <Button>Login </Button>
+                        </Link>
                 }
             </Header>
             <Content >
