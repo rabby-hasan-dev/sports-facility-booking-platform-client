@@ -7,11 +7,20 @@ import { uploadImage } from "../../../../utils/imageUploader";
 
 
 const CreateFacility = () => {
-    
+
     const [createFacility] = useCreateFacilityMutation();
 
 
+    const defaultFacilityData = {
+        "name": "Tennis Court",
+        "description": "Outdoor tennis court with synthetic surface.",
+        "pricePerHour": 30,
+        "location": "456 Sports Ave, Springfield"
+    }
+
+
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        console.log( 'create facility ', data);
         const img = await uploadImage(data?.image);
 
 
@@ -21,10 +30,11 @@ const CreateFacility = () => {
             image: img
         }
 
+        console.log( 'create facility ', facilityInfo);
         try {
             const res = await createFacility(facilityInfo);
             console.log(res);
-        }catch(error){
+        } catch (error) {
 
             console.log(error);
         }
@@ -39,9 +49,9 @@ const CreateFacility = () => {
 
     return (
         <div>
-              <h1 className="text-center text-5xl font-semibold mb-10 ">Create Facility</h1>
+            <h1 className="text-center text-5xl font-semibold mb-10 ">Create Facility</h1>
             <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit}>
+                <PForm onSubmit={onSubmit}  defaultValues={defaultFacilityData}>
                     <PInput name="name" label="Name" type="text"></PInput>
                     <PInput name="description" label="Description" type="text"></PInput>
                     <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>

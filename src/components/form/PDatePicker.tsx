@@ -17,7 +17,7 @@ const  PDatePicker = ({ name, label }: TPDatePickerProps) => {
                 name={name}
                 render={({ field }) =>(
                     <Form.Item label={label} >
-                        <DatePicker  {...field}  style={{width:'100%'}} size="middle" />
+                        <DatePicker  {...field}  style={{width:'100%'}} size="large" />
                     </Form.Item>
                 ) }
 

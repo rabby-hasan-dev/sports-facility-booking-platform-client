@@ -9,7 +9,6 @@ import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
 const ViewAllBookings = () => {
     const { data: allBookings , isFetching} = useGetAllBookingsByAdminQuery(undefined);
 
-    console.log(allBookings);
 
 
 

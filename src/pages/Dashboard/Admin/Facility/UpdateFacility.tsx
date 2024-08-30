@@ -15,13 +15,16 @@ const UpdateFacility = () => {
     const { data: facility } = useGetAllFacilityQuery(undefined, { skip: !id });
 
     const findSingleFacility = facility?.data?.find((item) => item._id === id);
- 
 
-  
+
+
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        const img = await uploadImage(data?.image);
+        let img;
+        if (data?.image) {
+            img = await uploadImage(data?.image);
+        }
 
         const facilityInfo = {
             ...data,
@@ -29,8 +32,10 @@ const UpdateFacility = () => {
             image: img
         }
 
+        console.log(facility);
+
         try {
-            const res = await updateFacility({id, data:facilityInfo});
+            const res = await updateFacility({ id, data: facilityInfo });
             console.log(res);
         } catch (error) {
 

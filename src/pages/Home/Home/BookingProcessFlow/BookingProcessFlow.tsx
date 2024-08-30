@@ -1,67 +1,17 @@
-import img from '../../../../assets/images/brandLogo.png'
 
-import { useState, useCallback } from 'react';
-import {
-  ReactFlow,
-  Controls,
-  Background,
-  applyNodeChanges,
-  applyEdgeChanges,
-} from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
+import Flow from './Flow';
 
-const initialNodes = [
-  {
-    id: '1',
-    data: { label: 'Hello' },
-    position: { x: 0, y: 0 },
-    type: 'input',
-  },
-  {
-    id: '2',
-    data: { label: 'Development' },
-    position: { x: 50, y: 50 },
-    type: 'input',
-  },
-  {
-    id: '3',
-    data: { label: 'World' },
-    position: { x: 100, y: 100 },
-  },
-];
-
-const initialEdges = [
-  { id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' },
-];
-
-const  BookingProcessFlow=()=> {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
-
-  const onNodesChange = useCallback(
-    (changes:any) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [],
-  );
-  const onEdgesChange = useCallback(
-    (changes:any) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [],
-  );
-
+const BookingProcessFlow = () => {
   return (
-    <div style={{ height: '100vh' }}>
-      <ReactFlow
-        nodes={nodes}
-        onNodesChange={onNodesChange}
-        edges={edges}
-        onEdgesChange={onEdgesChange}
-        fitView
-        
-      >
-        <Background />
-        <Controls />
-      </ReactFlow>
+    <div>
+       <div className="space-y-3 text-center bg-gray-100 p-5">
+                <h2 className="text-3xl font-extrabold text-gray-900">Booking process flow</h2>
+                <p className="text-lg text-gray-600 ">A step-by-step guide explaining the booking process.</p>
+            </div>
+
+      <Flow></Flow>
     </div>
   );
-}
+};
 
 export default BookingProcessFlow;

@@ -6,7 +6,7 @@ const FeaturedFacility = () => {
     return (
         <>
             <div className=" my-5 space-y-8  ">
-                <div className="space-y-3 max-w-7xl mx-auto">
+                <div className="space-y-3 max-w-7xl mx-auto text-center bg-gray-100 p-5">
                     <h2 className="text-3xl font-extrabold text-gray-900">Popular Facilities</h2>
                     <p className="text-lg text-gray-600 ">Discover and book from our selection of top-rated facilities.</p>
                 </div>
