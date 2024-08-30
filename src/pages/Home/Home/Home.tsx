@@ -2,7 +2,8 @@ import FAQ from "./FAQ/FAQ";
 import FeaturedFacility from "./FeaturedFacility/FeaturedFacility";
 import HeroSection from "./HeroSection/HeroSection";
 import Testimonial from "./Testimonial/Testimonial";
-import WorkFlow from "./WorkFlow/WorkFlow";
+import BookingProcessFlow from "./BookingProcessFlow/BookingProcessFlow";
+
 
 
 const Home = () => {
@@ -10,7 +11,8 @@ const Home = () => {
         <div>
             
             <HeroSection></HeroSection>
-            <WorkFlow></WorkFlow>,
+            <BookingProcessFlow></BookingProcessFlow>
+            <BookingProcessFlow></BookingProcessFlow>
             <FeaturedFacility></FeaturedFacility>
             <FAQ></FAQ>
             <Testimonial></Testimonial>

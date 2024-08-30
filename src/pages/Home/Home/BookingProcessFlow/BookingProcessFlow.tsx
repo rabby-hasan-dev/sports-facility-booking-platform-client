@@ -34,7 +34,7 @@ const initialEdges = [
   { id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' },
 ];
 
-const  WorkFlow=()=> {
+const  BookingProcessFlow=()=> {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
 
@@ -64,4 +64,4 @@ const  WorkFlow=()=> {
   );
 }
 
-export default WorkFlow;
+export default BookingProcessFlow;
