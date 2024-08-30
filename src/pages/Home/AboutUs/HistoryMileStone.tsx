@@ -14,7 +14,7 @@ const HistoryMileStone = () => {
       year: "2020",
       event: "Expanded services internationally, serving over 100,000 users.",
     },
-    // Add more milestones as needed
+   
   ];
 
   return (
