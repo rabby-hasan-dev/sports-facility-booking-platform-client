@@ -37,20 +37,26 @@ const CreateAdmin = () => {
 
     return (
         <>
+            <div className=" flex items-center justify-center bg-gray-100">
+                <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
+                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create  Admin</h2>
+
+                    <Row justify={"center"} align={"middle"}  >
+                        <PForm onSubmit={onSubmit}>
+                            <PInput placeholder="Input admin name ." name="name" label="Name" type="text"></PInput>
+                            <PInput placeholder="Input admin email ." name="email" label="Email" type="text"></PInput>
+                            <PInput placeholder="Input admin password ." name="password" label="Password" type="text"></PInput>
+                            <PInput placeholder="Input phone number." name="phone" label="Phone" type="text"></PInput>
+                            <PInput placeholder="Input admin address ." name="address" label="Address" type="text"></PInput>
+                            <Button htmlType="submit">Add Admin</Button>
+                        </PForm>
+                    </Row>
 
 
-            <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit}>
-                    <PInput name="name" label="Name" type="text"></PInput>
-                    <PInput name="email" label="Email" type="text"></PInput>
-                    <PInput name="password" label="Password" type="text"></PInput>
-                    <PInput name="phone" label="phone" type="text"></PInput>
-                    <PInput name="address" label="address" type="text"></PInput>
-                    <Button htmlType="submit">Add Admin</Button>
-                </PForm>
-            </Row>
 
 
+                </div>
+            </div>
 
 
 

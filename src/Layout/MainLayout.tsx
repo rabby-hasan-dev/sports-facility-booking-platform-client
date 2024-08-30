@@ -5,6 +5,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { logOut, selectCurrentUser, } from '../redux/features/auth/authSlice';
+import FooterComponent from '../pages/Shared/Footer/FooterCompo';
 
 
 const { Header, Content, Footer } = Layout;
@@ -67,7 +68,7 @@ const MainLayout: React.FC = () => {
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     items={navItems}
-                    style={{ flex: 1, minWidth: 0, justifyContent: 'center' }}
+                    style={{ flex: 1, minWidth: 0, justifyContent: 'center', color:'white' }}
                 />
                 {
                     user ? <Button onClick={() => dispatch(logOut())} >Logout</Button> :
@@ -91,8 +92,8 @@ const MainLayout: React.FC = () => {
 
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
-                Ant Design ©{new Date().getFullYear()} Created by Ant UED
+            <Footer style={{ textAlign: 'center', backgroundColor:'#001529' }}>
+                <FooterComponent></FooterComponent>
             </Footer>
         </Layout>
     );

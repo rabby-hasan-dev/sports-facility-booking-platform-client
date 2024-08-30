@@ -41,7 +41,7 @@ const Register = () => {
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
 
                 <Row justify={"center"} align={"middle"}  >
-                    <PForm onSubmit={onSubmit} >
+                    <PForm onSubmit={onSubmit} defaultValues={undefined} >
                         <PInput name="name" label="Name" type="text"></PInput>
                         <PInput name="email" label="Email" type="text"></PInput>
                         <PInput name="password" label="Password" type="text"></PInput>
@@ -50,7 +50,6 @@ const Register = () => {
                         <Button htmlType="submit"  style={{width:'100%'}} >Sign Up</Button>
                     </PForm>
                 </Row>
-
 
                 <Row justify={"center"} align={"middle"}>
                     <div className="text-center mb-4">
