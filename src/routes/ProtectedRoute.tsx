@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import { verifyToken } from "../utils/verifyToken";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logOut, TUser, useCurrentToken } from "../redux/features/auth/authSlice";
+import CustomError from "../error/CustomError";
 
 
 type TProtectRoute = {
@@ -28,7 +29,7 @@ const ProtectedRoute = ({ children, role }: TProtectRoute) => {
 
         //  dispatch ==> rendaring problem of sidebar
         dispatch(logOut());
-        return <Navigate to="/login" replace={true}></Navigate>;
+        return <CustomError></CustomError>
     }
 
     if (!token) {

@@ -1,4 +1,5 @@
-import { useRouteError } from "react-router-dom";
+import { Button, Result } from "antd";
+import { Link, useRouteError } from "react-router-dom";
 
 type TNotFound = {
     data: string;
@@ -13,18 +14,16 @@ type TNotFound = {
 const NotFound = () => {
     const error = useRouteError() as TNotFound;
 
-
+    console.log(error);
     return (
         <div className="flex justify-center items-center">
-            <div>
-                <h1>
-                    <i>{error.status && error.statusText}</i>
-                </h1>
+            <Result
+                status="404"
+                title={error?.status}
+                subTitle="Sorry, the page you visited does not exist."
+                extra={<Link to='/'><Button >Back Home</Button></Link>}
+            />
 
-                <p>
-                    <i>{error.data}</i>
-                </p>
-            </div>
         </div>
     );
 };

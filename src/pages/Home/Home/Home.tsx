@@ -7,9 +7,10 @@ import BookingProcessFlow from "./BookingProcessFlow/BookingProcessFlow";
 
 
 const Home = () => {
+   
     return (
         <div className="space-y-10">
-            
+           
             <HeroSection></HeroSection>
             <BookingProcessFlow></BookingProcessFlow>
             <FeaturedFacility></FeaturedFacility>
