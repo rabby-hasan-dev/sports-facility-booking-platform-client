@@ -32,7 +32,7 @@ const ContactUs = () => {
                         <address>
                             <span className="text-[#909396] "> Address</span> <br /> Mirpur,dahaka
                         </address>
-                        <p> <span className="text-[#909396] "> Email adress</span> <br />  email@gmail.com</p>
+                        <p> <span className="text-[#909396] "> Email adress</span> <br /> contact@sportsbooking.com</p>
                         <p> <span className="text-[#909396] "> Phone</span> <br />  012595565568</p>
                     </div>
 

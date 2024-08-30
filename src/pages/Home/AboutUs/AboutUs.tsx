@@ -1,11 +1,19 @@
+import ContactInfo from "./ContactInfo";
+import HistoryMileStone from "./HistoryMileStone";
+import MissionStatement from "./MissionStatement";
+import TeamSection from "./TeamSection";
 
 
 const AboutUs = () => {
     return (
         <div>
-            About Us Component
+            <MissionStatement />
+            <TeamSection />
+            <HistoryMileStone />
+            <ContactInfo />
 
-         
+
+
         </div>
     );
 };

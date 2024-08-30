@@ -31,7 +31,7 @@ const FAQ = () => {
         }
     ))
 
-    console.log(items)
+
 
 
 
@@ -43,7 +43,7 @@ const FAQ = () => {
         <div className="space-y-8 my-5">
             <div className="space-y-3">
                 <h2 className="text-3xl font-extrabold text-gray-900">Frequently asked questions</h2>
-                <p className="text-lg text-gray-600 ">Discover and book from our selection of top-rated facilities.</p>
+                <p className="text-lg text-gray-600 ">Frequently questions answer below .</p>
             </div>
 
             <Collapse items={items} defaultActiveKey={['1']} />;
