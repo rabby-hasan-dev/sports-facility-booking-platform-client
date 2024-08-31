@@ -1,12 +1,13 @@
 import { Button, Card, Image } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { useGetAllFacilityQuery } from "../../../redux/features/facility/facilityApi";
+import { IFacilities } from "../../../types/faicility.type";
 
 
 const FacilityDetails = () => {
     const { id } = useParams();
     const { data: facilities } = useGetAllFacilityQuery(undefined);
-    const singleFacility = facilities?.data?.find((item) => item._id === id);
+    const singleFacility = facilities?.data?.find((item:IFacilities) => item._id === id);
 
 
 

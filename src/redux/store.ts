@@ -11,6 +11,7 @@ import {
   REHYDRATE
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import facilitySlice from './features/facility/facilitySlice';
 
 const persitConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const persistedAuthReducer = persistReducer(persitConfig, authSlice);
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    facility:facilitySlice,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware)

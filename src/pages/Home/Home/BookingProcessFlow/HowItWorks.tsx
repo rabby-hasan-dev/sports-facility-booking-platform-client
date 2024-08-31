@@ -3,7 +3,6 @@ import { Timeline, } from 'antd';
 import { CheckCircleOutlined, FileTextOutlined, CalendarOutlined, CreditCardOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css'; 
 
-
 const steps = [
     {
         title: 'Select Your Facility',
