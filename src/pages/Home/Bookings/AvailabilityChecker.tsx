@@ -7,7 +7,7 @@ import moment from "moment";
 import { useBookingCheckerQuery } from "../../../redux/features/bookings/bookingsApi";
 import { TFacilityIdProps } from "./Bookings";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type TQueryParamsBookingsChecker = {
   name: string;
@@ -24,20 +24,25 @@ type TTimeSlots = {
 const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
   const [params, setParams] = useState<TQueryParamsBookingsChecker[] | []>([]);
   const { data: bookingChecker, isFetching } = useBookingCheckerQuery(params, { skip: !params.length });
-  console.log('fetching', isFetching)
-  // const toastId=toast.loading('Loading ....')
-  if (!facilityId) {
-    toast.error("facility id empty");
-  }
 
-  if(isFetching){
-    toast.loading('Loading ....',{duration:100})
-  }
+  useEffect(() => {
+    let toastId: any;
+    if (isFetching) {
+      toastId = toast.loading('Loading ....');
+    } else if (toastId) {
+      toast.dismiss(toastId);
+    }
+    return () => {
+      if (toastId) {
+        toast.dismiss(toastId);
+      }
+    };
 
-  if(bookingChecker){
-    toast.success('Successfull',{richColors:true})
-  }
 
+
+  }, [isFetching]);
+
+ 
 
   const submitTimeChecker: SubmitHandler<FieldValues> = async (data) => {
 

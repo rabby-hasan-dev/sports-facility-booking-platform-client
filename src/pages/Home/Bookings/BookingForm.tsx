@@ -24,12 +24,12 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
             const res = await createBookings(bookingData);
 
             if (res?.data.success) {
-                console.log(res)
+                
                 toast.loading("Payment Processing ....")
                 window.location.href = res.data?.data?.payment_url;
             } else {
-                console.error('Bookings creation failed:', res.message);
-                toast.error('Booking Create Faild')
+               
+                toast.error('Booking  failed!')
             }
 
 

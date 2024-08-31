@@ -46,7 +46,7 @@ const FAQ = () => {
                 <p className="text-lg text-gray-600 ">Frequently questions answer below .</p>
             </div>
 
-            <Collapse items={items} defaultActiveKey={['1']} />;
+            <Collapse style={{background:'white'}} items={items} defaultActiveKey={['1']} />;
 
         </div >
     );

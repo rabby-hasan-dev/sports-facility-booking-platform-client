@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AvailabilityChecker from "./AvailabilityChecker";
 import BookingForm from "./BookingForm";
 import FacilityOverview from "./FacilityOverview";
+import { toast } from "sonner";
 
 
 
@@ -16,7 +17,9 @@ const Bookings = () => {
 
     
 
-
+    if (!facilityId) {
+        toast.error("facility id empty");
+      }
 
 
     return (
