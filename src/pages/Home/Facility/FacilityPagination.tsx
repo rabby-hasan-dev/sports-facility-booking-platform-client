@@ -1,15 +1,29 @@
 import { Pagination } from 'antd';
 
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { setCurrentPage, useCurrentPage, usePageSize } from '../../../redux/features/facility/facilitySlice';
+
 
 const FacilityPagination = () => {
-    const handlePage = (data) => {
-        console.log('pagination ==>', data);
+    const pageSize = useAppSelector(usePageSize);
+    const currentPage = useAppSelector(useCurrentPage);
+    const dispatch = useAppDispatch();
+
+    const handlePage = (data: number) => {
+        dispatch(setCurrentPage(data));
 
     }
 
+
     return (
         <div>
-            <Pagination onChange={(value) => handlePage(value)} align="center" pageSize={3} defaultCurrent={1} total={10} />;
+            <Pagination
+                align="center"
+                onChange={(value) => handlePage(value)}
+                pageSize={pageSize}
+                defaultCurrent={currentPage}
+                total={10} />;
+
         </div>
     );
 };

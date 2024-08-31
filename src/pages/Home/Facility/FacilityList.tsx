@@ -8,7 +8,7 @@ import { IFacilities } from "../../../types/faicility.type";
  }
 
 const FacilityList = ({filteredFacilities,isFetching}:TFacilityProps) => {
-    console.log(filteredFacilities)
+
    
     return (
         <div className="grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5   2xl:grid-cols-6  gap-4">

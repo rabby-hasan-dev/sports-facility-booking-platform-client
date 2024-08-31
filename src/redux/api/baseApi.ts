@@ -2,6 +2,7 @@
 import { BaseQueryApi, BaseQueryFn, createApi, DefinitionType, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../store';
 import { logOut, setUser } from '../features/auth/authSlice';
+import { toast } from 'sonner';
 
 
 const baseQuery = fetchBaseQuery({
@@ -32,13 +33,13 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, Definition
     // console.log('base api inside ==>', result)
 
     if(result.error?.status ===404){
-        console.log(result.error.data.message)
+        toast.error(result.error.data.message)
       
         
     }
 
     if(result.error?.status ===403){
-        console.log(result.error.data.message)
+        toast.error(result.error.data.message)
     }
     if (result.error?.status === 401) {
         // send Refresh Token
