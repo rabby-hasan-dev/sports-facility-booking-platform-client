@@ -3,27 +3,45 @@ import PForm from "../../../components/form/PForm";
 import PDatePicker from "../../../components/form/PDatePicker";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import moment from "moment";
-import { useEffect } from "react";
+
+import { useBookingCheckerQuery } from "../../../redux/features/bookings/bookingsApi";
+import { TFacilityIdProps } from "./Bookings";
+import { toast } from "sonner";
+import { useState } from "react";
+
+export type TQueryParamsBookingsChecker = {
+  name: string;
+  value: string | undefined;
+}
+
+type TTimeSlots = {
+  startTime: string;
+  endTime: string;
+}
 
 
 
+const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
+  const [params, setParams] = useState<TQueryParamsBookingsChecker[] | []>([]);
+  const { data: bookingChecker, isFetching } = useBookingCheckerQuery(params, { skip: !params.length });
+  console.log('fetching', isFetching)
+  // const toastId=toast.loading('Loading ....')
+  if (!facilityId) {
+    toast.error("facility id empty");
+  }
 
-const AvailabilityChecker = ({ bookingChecker, facilityId, setParams, params }) => {
- 
- 
-  useEffect(() => {
+  if(isFetching){
+    toast.loading('Loading ....',{duration:100})
+  }
 
-    if (facilityId) {
-
-      setParams([{ name: 'facility', value: facilityId }]);
-    }
-
-  }, [facilityId]);
+  if(bookingChecker){
+    toast.success('Successfull',{richColors:true})
+  }
 
 
   const submitTimeChecker: SubmitHandler<FieldValues> = async (data) => {
 
-    const queryParams = [...params];
+    const queryParams = [{ name: 'facility', value: facilityId }];
 
     if (data.date) {
       const formattedDate = moment(new Date(data.date)).format('YYYY-MM-DD');
@@ -36,8 +54,6 @@ const AvailabilityChecker = ({ bookingChecker, facilityId, setParams, params }) 
   }
 
 
-
-
   return (
 
     <Card >
@@ -45,7 +61,7 @@ const AvailabilityChecker = ({ bookingChecker, facilityId, setParams, params }) 
 
       <div>
         <PForm onSubmit={submitTimeChecker}  >
-          <Flex justify="space-between"  gap={8}>
+          <Flex justify="space-between" gap={8}>
 
             <PDatePicker name="date"></PDatePicker>
             <Button htmlType="submit" size="large" >Check Availibility</Button>
@@ -59,7 +75,7 @@ const AvailabilityChecker = ({ bookingChecker, facilityId, setParams, params }) 
 
       <div className="mb-8">
         <div className="grid grid-cols-2 gap-4">
-          {bookingChecker?.data?.map((item, index) => (
+          {bookingChecker?.data?.map((item: TTimeSlots, index: number) => (
             <div key={index} className="text-red-500 text-xl p-4 text-center border rounded bg-white shadow-md">
               {item?.startTime} - {item?.endTime}
             </div>
