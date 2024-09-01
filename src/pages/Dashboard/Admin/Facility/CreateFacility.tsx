@@ -49,7 +49,11 @@ const CreateFacility = () => {
 
     return (
         <div>
-            <h1 className="text-center text-5xl font-semibold mb-10 ">Create Facility</h1>
+
+       <div className=" flex items-center justify-center bg-gray-100">
+                <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
+                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create Facility</h2>
+   
             <Row justify={"center"} align={"middle"}  >
                 <PForm onSubmit={onSubmit}  defaultValues={defaultFacilityData}>
                     <PInput name="name" label="Name" type="text"></PInput>
@@ -77,6 +81,8 @@ const CreateFacility = () => {
                     <Button htmlType="submit">Create Facility</Button>
                 </PForm>
             </Row>
+         </div>
+        </div>
 
         </div>
     );

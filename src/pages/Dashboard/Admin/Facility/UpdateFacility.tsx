@@ -7,6 +7,7 @@ import { uploadImage } from "../../../../utils/imageUploader";
 import PForm from "../../../../components/form/PForm";
 import PInput from "../../../../components/form/PInput";
 import { useParams } from "react-router-dom";
+import { IFacilities } from "../../../../types/faicility.type";
 
 
 const UpdateFacility = () => {
@@ -14,7 +15,7 @@ const UpdateFacility = () => {
     const [updateFacility] = useUpdateFacilityMutation();
     const { data: facility } = useGetAllFacilityQuery(undefined, { skip: !id });
 
-    const findSingleFacility = facility?.data?.find((item) => item._id === id);
+    const findSingleFacility = facility?.data?.find((item:IFacilities) => item._id === id);
 
 
 

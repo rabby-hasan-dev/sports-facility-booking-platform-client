@@ -1,15 +1,17 @@
 import { useGetAllBookingsByAdminQuery } from "../../../../redux/features/bookings/bookingsApi";
 import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
+import { IBookings } from "../../../../types/booking.type";
 
 
-// export type TTableData = Pick< , 'status' | 'startDate' | 'endDate'>
+
+export type TTableData = Pick<IBookings, '_id' | 'user' | 'paymentStatus' | 'transactionId' | 'facility' | 'date' | 'startTime' | 'endTime' | 'payableAmount' | 'isBooked'>
+
+
 
 
 
 const ViewAllBookings = () => {
-    const { data: allBookings , isFetching} = useGetAllBookingsByAdminQuery(undefined);
-
-
+    const { data: allBookings, isFetching } = useGetAllBookingsByAdminQuery(undefined);
 
 
     const tableData = allBookings?.data?.map(({
@@ -20,32 +22,36 @@ const ViewAllBookings = () => {
         startTime,
         endTime,
         payableAmount,
-        isBooked
-    }) => ({
+        isBooked,
+        paymentStatus,
+        transactionId
+    }: TTableData) => ({
         key: _id,
-        name:user?.name,
-        facility:facility?.name,
+        name: user?.name,
+        facility: facility?.name,
         date,
         startTime,
         endTime,
         payableAmount,
-        isBooked
+        isBooked,
+        paymentStatus,
+        transactionId
     }))
 
 
 
 
-
-    const columns: TableColumnsType<any> = [
+    const columns: TableColumnsType<TTableData> = [
         {
-            title: 'Name',
+            title: 'Consumer Name',
             dataIndex: 'name',
             showSorterTooltip: { target: 'full-header' },
 
         },
         {
-            title: 'Facility',
+            title: 'Facility Name',
             dataIndex: 'facility',
+            showSorterTooltip: { target: 'full-header' },
         },
         {
             title: 'Date',
@@ -54,36 +60,55 @@ const ViewAllBookings = () => {
         {
             title: 'Start Time',
             dataIndex: 'startTime',
+            responsive: ['xl', 'xxl'],
         },
         {
             title: 'EndTime',
             dataIndex: 'endTime',
+            responsive: ['xl', 'xxl'],
         },
         {
-            title: 'Payable Amount',
+            title: 'Amount',
             dataIndex: 'payableAmount',
+            responsive: [ 'xl', 'xxl'],
         },
         {
-            title: 'Bookings Status',
-            dataIndex:'isBooked',
+            title: 'Booking Status',
+            dataIndex: 'isBooked',
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
+            render: (status) => (
+                <Tag color={status ? 'green' : 'red'}>
+                    {status ? 'Confirmed' : 'Cancelled'}
+                </Tag>
+            ),
+
+        },
+        {
+            title: 'Payment Status',
+            dataIndex: 'paymentStatus',
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
+            render: (status) => (
+
+                <Tag color={status === 'Paid' ? 'green' : status === 'pending' ? 'yellow' : 'red'}>
+                    {status === 'Paid' ? 'Paid' : status === 'pending' ? 'Pending' : 'Faild'}
+                </Tag>
+            ),
+
+        },
+        {
+            title: 'transactionId',
+            dataIndex: 'transactionId',
+            responsive: [  'xl', 'xxl'],
         },
         {
             title: 'Action',
             key: "x",
             render: (item) => {
 
-                return (
-
-                    <Space size={4} >
-                        <Button>Details</Button>
-
-                    </Space>
-
-                )
+                return (<Button>Details</Button>)
 
 
             },
-            // responsive: ['md'],
         },
     ];
 

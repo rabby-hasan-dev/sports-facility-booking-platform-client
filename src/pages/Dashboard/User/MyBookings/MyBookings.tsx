@@ -3,31 +3,27 @@
 
 import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
 import { useDeleteSingleBookingsMutation, useGetAllBookingsByUserQuery } from "../../../../redux/features/bookings/bookingsApi";
+import { IBookings } from "../../../../types/booking.type";
 
 
-// export type TTableData = Pick< , 'status' | 'startDate' | 'endDate'>
+export type TTableData = Pick<IBookings , '_id' | 'facility' | 'date' | 'startTime'| 'endTime'| 'payableAmount'| 'isBooked'>
 
 
 
 const  MyBookings = () => {
     const { data: allBookings , isFetching} = useGetAllBookingsByUserQuery(undefined);
     const [cancleBooking]=useDeleteSingleBookingsMutation();
- 
-
-
 
     const tableData = allBookings?.data?.map(({
-        _id,
-        user,
+        _id,  
         facility,
         date,
         startTime,
         endTime,
         payableAmount,
         isBooked
-    }) => ({
+    }:TTableData) => ({
         key: _id,
-        name:user?.name,
         facility:facility?.name,
         date,
         startTime,
@@ -40,16 +36,12 @@ const  MyBookings = () => {
 
 
 
-    const columns: TableColumnsType<any> = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            showSorterTooltip: { target: 'full-header' },
-
-        },
+    const columns: TableColumnsType<TTableData> = [
+       
         {
             title: 'Facility',
             dataIndex: 'facility',
+            showSorterTooltip: { target: 'full-header' },
         },
         {
             title: 'Date',
@@ -58,18 +50,28 @@ const  MyBookings = () => {
         {
             title: 'Start Time',
             dataIndex: 'startTime',
+            responsive: ['sm' ,'md', 'lg', 'xl', 'xxl'],
         },
         {
             title: 'EndTime',
             dataIndex: 'endTime',
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
         },
         {
-            title: 'Payable Amount',
+            title: 'Amount',
             dataIndex: 'payableAmount',
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
         },
         {
-            title: 'Bookings Status',
-            dataIndex:'isBooked',
+            title: 'Booking Status',
+            dataIndex: 'isBooked',
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'], 
+            render: (status) => (
+                <Tag color={status ? 'green' : 'red'}>
+                    {status ? 'Confirmed' : 'Cancelled'}
+                </Tag>
+            ),
+           
         },
         {
             title: 'Action',
@@ -81,14 +83,13 @@ const  MyBookings = () => {
                     <Space size={4} >
                         <Button>Details</Button>
                         <Button onClick={() => cancleBooking(item.key)} >Delete</Button>
-
                     </Space>
 
                 )
 
 
             },
-            // responsive: ['md'],
+            
         },
     ];
 

@@ -14,7 +14,6 @@ import { useEffect, useMemo, useState } from "react";
 const HomeFacility = () => {
     const searchTerm = useAppSelector(useSearchTerm);
     const filters = useAppSelector(usePriceRange);
-    console.log(filters);
     const currentPage = useAppSelector(useCurrentPage);
     const pageSize = useAppSelector(usePageSize);
     const { data: allFacility, isFetching } = useGetAllFacilityQuery(undefined);

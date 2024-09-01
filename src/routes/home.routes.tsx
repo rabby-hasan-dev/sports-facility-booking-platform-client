@@ -11,7 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 export const homeRoutes = [
     {
 
-        path: "/",
+        index: true,
         element: <Home></Home>
 
     },

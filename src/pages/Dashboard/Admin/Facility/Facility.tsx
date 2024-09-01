@@ -1,15 +1,16 @@
 
 
 
-import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
+import { Button, Space, Table, TableColumnsType, } from "antd";
 
 import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
 import { Link } from "react-router-dom";
+import { IFacilities } from "../../../../types/faicility.type";
 
 
 
 
-// export type TTableData = Pick< , 'status' | 'startDate' | 'endDate'>
+export type TTableData = Pick<IFacilities, '_id' | 'name' | 'description' | 'image' | 'location' | 'pricePerHour'>
 
 
 
@@ -21,7 +22,7 @@ const Facility = () => {
     const [deleteFacility] = useDeleteSingleFacilityMutation();
 
 
-    const tableData = allFacily?.data?.map(({ _id, name, description, pricePerHour, location }) => ({
+    const tableData = allFacily?.data?.map(({ _id, name, description, pricePerHour, location }: TTableData) => ({
         key: _id,
         name,
         description,
@@ -33,7 +34,7 @@ const Facility = () => {
 
 
 
-    const columns: TableColumnsType<any> = [
+    const columns: TableColumnsType<TTableData> = [
         {
             title: 'Name',
             dataIndex: 'name',
@@ -43,14 +44,17 @@ const Facility = () => {
         {
             title: 'Description',
             dataIndex: 'description',
+            responsive:['lg']
         },
         {
             title: 'Price PerHour',
             dataIndex: 'pricePerHour',
+            responsive:['lg']
         },
         {
             title: 'Location',
             dataIndex: 'location',
+            responsive:['lg']
         },
         {
             title: 'Action',
