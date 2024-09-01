@@ -69,7 +69,7 @@ const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
           <Flex justify="space-between" gap={8}>
 
             <PDatePicker name="date"></PDatePicker>
-            <Button htmlType="submit" size="large" >Check Availibility</Button>
+            <Button type="primary"   htmlType="submit" size="large" >Check Availibility</Button>
 
           </Flex>
         </PForm>

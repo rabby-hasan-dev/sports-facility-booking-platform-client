@@ -1,19 +1,25 @@
+import { Spin } from "antd";
 import Card from "../../../components/ui/Card";
 import { IFacilities } from "../../../types/faicility.type";
 
 
- type TFacilityProps={
-    filteredFacilities:IFacilities[];
-    isFetching:boolean;
- }
+type TFacilityProps = {
+    filteredFacilities: IFacilities[];
+    isFetching: boolean;
+}
 
-const FacilityList = ({filteredFacilities,isFetching}:TFacilityProps) => {
+const FacilityList = ({ filteredFacilities, isFetching }: TFacilityProps) => {
 
-   
+
     return (
-        <div className="grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5   2xl:grid-cols-6  gap-4">
+        <div  className=" justify-around  grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  2xl:grid-cols-6  ">
+
             {
-               filteredFacilities?.map((item: IFacilities) =>
+                isFetching ? <Spin size="large" /> : null
+            }
+
+            {
+                filteredFacilities?.map((item: IFacilities) =>
                     <Card
                         key={item?._id}
                         id={item?._id}

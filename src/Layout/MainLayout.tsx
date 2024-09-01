@@ -71,9 +71,9 @@ const MainLayout: React.FC = () => {
                     style={{ flex: 1, minWidth: 0, justifyContent: 'center', color:'white' }}
                 />
                 {
-                    user ? <Button onClick={() => dispatch(logOut())} >Logout</Button> :
+                    user ? <Button type='primary' onClick={() => dispatch(logOut())} >Logout</Button> :
                         <Link to='/login' >
-                            <Button>Login </Button>
+                            <Button type='primary' >Login </Button>
                         </Link>
                 }
             </Header>

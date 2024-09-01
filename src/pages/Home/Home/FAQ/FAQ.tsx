@@ -1,5 +1,6 @@
 import { Collapse, CollapseProps } from "antd";
 import { useEffect, useState } from "react";
+import HeadingComponent from "../../../../components/ui/HeadingComponent";
 
 
 const FAQ = () => {
@@ -41,12 +42,8 @@ const FAQ = () => {
     return (
 
         <div className="space-y-8 my-5 max-w-7xl mx-auto">
-            <div className="space-y-3 text-center bg-gray-100 p-5">
-                <h2 className="text-3xl font-extrabold text-gray-900">Frequently asked questions</h2>
-                <p className="text-lg text-gray-600 ">Frequently questions answer below .</p>
-            </div>
-
-            <Collapse style={{background:'white'}} items={items} defaultActiveKey={['1']} />;
+            <HeadingComponent heading="Frequently asked questions" subHeading="Frequently questions answer below." />
+            <Collapse style={{ background: 'white' }} items={items} defaultActiveKey={['1']} />;
 
         </div >
     );

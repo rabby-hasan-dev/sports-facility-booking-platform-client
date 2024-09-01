@@ -65,7 +65,7 @@ const ContactForm = () => {
                         <TextArea rows={4} placeholder="Your Message" />
                     </Form.Item>
                     <Form.Item>
-                        <Button htmlType="submit" block>
+                        <Button type="primary" htmlType="submit" block>
                             Submit
                         </Button>
                     </Form.Item>

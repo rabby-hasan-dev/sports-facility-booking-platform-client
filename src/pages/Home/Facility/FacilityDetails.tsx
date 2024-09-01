@@ -37,7 +37,7 @@ const FacilityDetails = () => {
                         <p className="text-xl font-bold">$ {singleFacility?.pricePerHour} </p>
                         <p>{singleFacility?.description} </p>
 
-                        <Link to={`/bookings/${id}`} ><Button>Book Now</Button></Link>
+                        <Link to={`/bookings/${id}`} ><Button type="primary" className="mt-4"  >Book Now</Button></Link>
                     </div>
                 </Card>
 

@@ -50,7 +50,7 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
                 <PDatePicker label="Date" name="date"></PDatePicker>
                 <PTimePicker name="startTime" label="Start Time" />
                 <PTimePicker name="endTime" label="End Time" />
-                <Button  htmlType="submit">Proced to Pay</Button>
+                <Button  type="primary" htmlType="submit">Proced to Pay</Button>
 
             </PForm>
         </Card>

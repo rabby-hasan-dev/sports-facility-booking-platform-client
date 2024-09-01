@@ -1,7 +1,7 @@
 
 import { Timeline, } from 'antd';
 import { CheckCircleOutlined, FileTextOutlined, CalendarOutlined, CreditCardOutlined } from '@ant-design/icons';
-import 'antd/dist/reset.css'; 
+import 'antd/dist/reset.css';
 
 const steps = [
     {
@@ -26,22 +26,25 @@ const steps = [
     },
 ];
 
+
+
 const HowItWorks = () => {
     return (
 
         <div className="mx-auto px-4 py-8 bg-gray-100 rounded-lg shadow-md">
-            <Timeline mode="alternate">
-                {steps.map((step, index) => (
-                    <Timeline.Item
-                        key={index}
-                        dot={step.icon}
-                        color={index % 2 === 0 ? 'blue' : 'green'}
-                    >
-                        <div className="mb-2 text-lg font-semibold">{step.title}</div>
-                        <div className="text-gray-700">{step.description}</div>
-                    </Timeline.Item>
-                ))}
-            </Timeline>
+            <Timeline
+                mode="alternate"
+                items={steps.map((step, index) => ({
+                    color: index % 2 === 0 ? 'blue' : 'green',
+                    dot: step.icon,
+                    children: (
+                        <>
+                            <div className="mb-2 text-lg font-semibold">{step.title}</div>
+                            <div className="text-gray-700">{step.description}</div>
+                        </>
+                    )
+                }))}
+            />
         </div>
     );
 
