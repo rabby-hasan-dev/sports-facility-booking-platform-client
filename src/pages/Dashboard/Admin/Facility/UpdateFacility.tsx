@@ -15,7 +15,7 @@ const UpdateFacility = () => {
     const [updateFacility] = useUpdateFacilityMutation();
     const { data: facility } = useGetAllFacilityQuery(undefined, { skip: !id });
 
-    const findSingleFacility = facility?.data?.find((item:IFacilities) => item._id === id);
+    const findSingleFacility = facility?.data?.find((item: IFacilities) => item._id === id);
 
 
 
@@ -54,36 +54,40 @@ const UpdateFacility = () => {
     return (
         <div>
 
-            <h1 className="text-center text-5xl font-semibold mb-10 ">Update Facility</h1>
+            <div className=" flex items-center justify-center bg-gray-100">
+                <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
+                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Update Facility</h2>
 
-            <Row justify={"center"} align={"middle"}  >
-                <PForm onSubmit={onSubmit} defaultValues={findSingleFacility}>
-                    <PInput name="name" label="Name" type="text"></PInput>
-                    <PInput name="description" label="Description" type="text"></PInput>
-                    <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>
-                    <PInput name="location" label="Location" type="text"></PInput>
-                    <Controller
-                        name="image"
-                        render={({ field: { onChange, value, ...field } }) =>
+                    <Row justify={"center"} align={"middle"}  >
+                        <PForm onSubmit={onSubmit} defaultValues={findSingleFacility}>
+                            <PInput name="name" label="Name" type="text"></PInput>
+                            <PInput name="description" label="Description" type="text"></PInput>
+                            <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>
+                            <PInput name="location" label="Location" type="text"></PInput>
+                            <Controller
+                                name="image"
+                                render={({ field: { onChange, value, ...field } }) =>
 
-                        (
-                            <Form.Item label="Picture"  >
-                                <Input
-                                    type="file" {...field}
-                                    onChange={(e) => onChange(e.target.files?.[0])}
-                                    value={value?.fileName}
-                                ></Input>
-                            </Form.Item>
-                        )
-                        }
+                                (
+                                    <Form.Item label="Picture"  >
+                                        <Input
+                                            type="file" {...field}
+                                            onChange={(e) => onChange(e.target.files?.[0])}
+                                            value={value?.fileName}
+                                        ></Input>
+                                    </Form.Item>
+                                )
+                                }
 
-                    />
+                            />
 
 
-                    <Button htmlType="submit">Update Facility</Button>
-                </PForm>
-            </Row>
+                            <Button type="primary" htmlType="submit">Update Facility</Button>
+                        </PForm>
+                    </Row>
 
+                </div>
+            </div>
         </div>
     );
 };

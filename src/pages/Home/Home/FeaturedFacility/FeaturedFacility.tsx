@@ -5,9 +5,10 @@ import { useGetAllFacilityQuery } from "../../../../redux/features/facility/faci
 import { IFacilities } from "../../../../types/faicility.type";
 
 const FeaturedFacility = () => {
-    const { data: allFacility, isFetching} = useGetAllFacilityQuery(undefined);
+    const { data: allFacility, isFetching } = useGetAllFacilityQuery(undefined);
 
-    
+   
+
     return (
         <>
             <div className=" my-5 space-y-8  ">

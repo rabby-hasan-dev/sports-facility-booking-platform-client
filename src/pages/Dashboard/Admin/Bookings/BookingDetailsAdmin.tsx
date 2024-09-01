@@ -14,7 +14,7 @@ const BookingDetailsAdmin = () => {
         return <Spin></Spin>;
     }
 
-    const { user, startTime, transactionId, paymentStatus, isBooked, payableAmount, date, facility } = singleBookingData;
+    const { user, startTime,endTime, transactionId, paymentStatus, isBooked, payableAmount, date, facility } = singleBookingData;
 
     return (
         <div className="p-8 space-y-8">
@@ -57,6 +57,7 @@ const BookingDetailsAdmin = () => {
                 >
                     <Descriptions.Item label="Date">{date}</Descriptions.Item>
                     <Descriptions.Item label="Start Time">{startTime}</Descriptions.Item>
+                    <Descriptions.Item label="End Time">{endTime}</Descriptions.Item>
                     <Descriptions.Item label="Transaction ID">{transactionId}</Descriptions.Item>
                     <Descriptions.Item label="Payment Status">
                         <Tag color={paymentStatus === "Paid" ? "green" : "red"}>

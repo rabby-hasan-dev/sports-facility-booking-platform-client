@@ -1,31 +1,53 @@
 
 
 
-import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
+import { Button, message, Popconfirm, PopconfirmProps, Space, Table, TableColumnsType, Tag, } from "antd";
 import { useDeleteSingleBookingsMutation, useGetAllBookingsByUserQuery } from "../../../../redux/features/bookings/bookingsApi";
 import { IBookings } from "../../../../types/booking.type";
 import { Link } from "react-router-dom";
 
 
-export type TTableData = Pick<IBookings , '_id' | 'facility' | 'date' | 'startTime'| 'endTime'| 'payableAmount'| 'isBooked'>
+export type TTableData = Pick<IBookings, '_id' | 'facility' | 'date' | 'startTime' | 'endTime' | 'payableAmount' | 'isBooked'>
 
 
 
-const  MyBookings = () => {
-    const { data: allBookings , isFetching} = useGetAllBookingsByUserQuery(undefined);
-    const [cancleBooking]=useDeleteSingleBookingsMutation();
+const MyBookings = () => {
+    const { data: allBookings, isFetching } = useGetAllBookingsByUserQuery(undefined);
+    const [cancleBooking] = useDeleteSingleBookingsMutation();
+
+
+
+    const handleConfirm: PopconfirmProps['onConfirm'] = async (id) => {
+        const res = await cancleBooking(id);
+        if (res?.data?.success) {
+            message.success('Booking Delete Successful');
+
+        } else {
+            message.success('Something Went Wrong!');
+        }
+
+
+
+    };
+
+
+
+
+
+
+
 
     const tableData = allBookings?.data?.map(({
-        _id,  
+        _id,
         facility,
         date,
         startTime,
         endTime,
         payableAmount,
         isBooked
-    }:TTableData) => ({
+    }: TTableData) => ({
         key: _id,
-        facility:facility?.name,
+        facility: facility?.name,
         date,
         startTime,
         endTime,
@@ -38,7 +60,7 @@ const  MyBookings = () => {
 
 
     const columns: TableColumnsType<TTableData> = [
-       
+
         {
             title: 'Facility',
             dataIndex: 'facility',
@@ -51,7 +73,7 @@ const  MyBookings = () => {
         {
             title: 'Start Time',
             dataIndex: 'startTime',
-            responsive: ['sm' ,'md', 'lg', 'xl', 'xxl'],
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
         },
         {
             title: 'EndTime',
@@ -61,18 +83,18 @@ const  MyBookings = () => {
         {
             title: 'Amount',
             dataIndex: 'payableAmount',
-            responsive: [ 'lg', 'xl', 'xxl'],
+            responsive: ['lg', 'xl', 'xxl'],
         },
         {
             title: 'Booking Status',
             dataIndex: 'isBooked',
-            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'], 
+            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
             render: (status) => (
                 <Tag color={status ? 'green' : 'red'}>
                     {status ? 'Confirmed' : 'Cancelled'}
                 </Tag>
             ),
-           
+
         },
         {
             title: 'Action',
@@ -82,17 +104,28 @@ const  MyBookings = () => {
                 return (
 
                     <Space size={4} >
-                     <Link to={item?.key}>
-                     <Button>Details</Button>
-                     </Link>
-                        <Button onClick={() => cancleBooking(item?.key)} >Delete</Button>
+                        <Link to={item?.key}>
+                            <Button>Details</Button>
+                        </Link>
+
+                        <Popconfirm
+                            title="Delete this booking"
+                            description="Are you sure to delete this booking?"
+                            onConfirm={() => handleConfirm(item?.key)}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button danger >Delete</Button>
+                        </Popconfirm>
+
+
                     </Space>
 
                 )
 
 
             },
-            
+
         },
     ];
 
@@ -121,4 +154,4 @@ const  MyBookings = () => {
     );
 };
 
-export default  MyBookings;
+export default MyBookings;

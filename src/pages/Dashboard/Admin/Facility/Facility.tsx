@@ -1,7 +1,7 @@
 
 
 
-import { Button, Space, Table, TableColumnsType, } from "antd";
+import { Button, message, Popconfirm, PopconfirmProps, Space, Table, TableColumnsType, } from "antd";
 
 import { useDeleteSingleFacilityMutation, useGetAllFacilityQuery } from "../../../../redux/features/facility/facilityApi";
 import { Link } from "react-router-dom";
@@ -19,6 +19,24 @@ export type TTableData = Pick<IFacilities, '_id' | 'name' | 'description' | 'ima
 const Facility = () => {
     const { data: allFacily, isFetching } = useGetAllFacilityQuery(undefined);
     const [deleteFacility] = useDeleteSingleFacilityMutation();
+
+
+    const handleConfirm: PopconfirmProps['onConfirm'] = async (id) => {
+        const res = await deleteFacility(id);
+        if (res?.data?.success) {
+            message.success('Booking Delete Successful');
+
+        } else {
+            message.success('Something Went Wrong!');
+        }
+
+
+
+    };
+
+
+
+
 
 
     const tableData = allFacily?.data?.map(({ _id, name, description, pricePerHour, location }: TTableData) => ({
@@ -43,17 +61,17 @@ const Facility = () => {
         {
             title: 'Description',
             dataIndex: 'description',
-            responsive:['lg']
+            responsive: ['lg']
         },
         {
             title: 'Price PerHour',
             dataIndex: 'pricePerHour',
-            responsive:['lg']
+            responsive: ['lg']
         },
         {
             title: 'Location',
             dataIndex: 'location',
-            responsive:['lg']
+            responsive: ['lg']
         },
         {
             title: 'Action',
@@ -66,7 +84,16 @@ const Facility = () => {
                         <Link to={item.key} >
                             <Button> update</Button>
                         </Link>
-                        <Button onClick={() => deleteFacility(item.key)} >Delete</Button>
+                        <Popconfirm
+                            title="Delete this facility"
+                            description="Are you sure to delete this facility?"
+                            onConfirm={() => handleConfirm(item?.key)}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button danger >Delete</Button>
+                        </Popconfirm>
+
 
                     </Space>
 

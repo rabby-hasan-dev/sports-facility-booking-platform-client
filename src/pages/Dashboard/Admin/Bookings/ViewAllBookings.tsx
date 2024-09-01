@@ -110,7 +110,7 @@ const ViewAllBookings = () => {
                 return (
                     <Link to={item?.key} >
                         <Button >Details</Button>
-                    </Link>
+                    </Link> 
 
                 )
 
