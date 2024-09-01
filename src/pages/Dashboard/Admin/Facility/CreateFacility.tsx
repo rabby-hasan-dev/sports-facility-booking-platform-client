@@ -78,7 +78,7 @@ const CreateFacility = () => {
                         />
 
 
-                        <Button htmlType="submit">Create Facility</Button>
+                        <Button type="primary" htmlType="submit">Create Facility</Button>
                     </PForm>
                 </Row>
             </div>

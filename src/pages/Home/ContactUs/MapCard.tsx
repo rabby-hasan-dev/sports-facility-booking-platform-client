@@ -8,7 +8,7 @@ const MapCard = () => {
     const position = [23.820626491316503, 90.37038287534364]
 
     return (
-        <>
+        <div>
             <Card bordered={false} style={{ backgroundColor: '#fff', padding: '20px' }}>
                 <h2 className='text-lg font-medium mb-2' >Contact Details</h2>
                 <p><PhoneOutlined /> Phone: (123) 456-7890</p>
@@ -30,7 +30,7 @@ const MapCard = () => {
                     </Marker>
                 </MapContainer>
             </Card>
-        </>
+        </div>
     );
 };
 

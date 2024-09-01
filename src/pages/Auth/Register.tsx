@@ -47,7 +47,7 @@ const Register = () => {
                         <PInput name="password" label="Password" type="text"></PInput>
                         <PInput name="phone" label="Phone" type="text"></PInput>
                         <PInput name="address" label="Address" type="text"></PInput>
-                        <Button htmlType="submit"  style={{width:'100%'}} >Sign Up</Button>
+                        <Button type="primary" htmlType="submit"  style={{width:'100%'}} >Sign Up</Button>
                     </PForm>
                 </Row>
 

@@ -1,6 +1,6 @@
 
-import { UserOutlined,BellOutlined } from '@ant-design/icons';
-import { Card, Button, List, Avatar,  } from 'antd';
+import { UserOutlined, BellOutlined } from '@ant-design/icons';
+import { Card, Button, List, Avatar, } from 'antd';
 import { Link } from 'react-router-dom';
 import WelcomeHeaderUser from './WelcomeHeaderUser';
 
@@ -27,14 +27,14 @@ const UserDashboard = () => {
 
             {/* Do: Quick Links */}
             <div className="mb-6">
-                <Link to='#'>
-                    <Button type="primary" className="mr-4">Edit Profile</Button>
-                </Link>
-                <Link to='#'>
-                    <Button type="default" className="mr-4">Change Password</Button>
-                </Link>
                 <Link to='/user/user-bookings'>
-                    <Button type="default" className='mt-4'>My Bookings</Button>
+                    <Button type="primary" className='mr-4'>My Bookings</Button>
+                </Link>
+                <Link to='#'>
+                    <Button type="default" className="mr-4">Edit Profile</Button>
+                </Link>
+                <Link to='#'>
+                    <Button type="default" className="mt-4">Change Password</Button>
                 </Link>
             </div>
 
@@ -45,7 +45,7 @@ const UserDashboard = () => {
                     renderItem={item => (
                         <List.Item>
                             <List.Item.Meta
-                                avatar={<Avatar  icon={<UserOutlined />} />}
+                                avatar={<Avatar icon={<UserOutlined />} />}
                                 title={<a href="">{item}</a>}
                                 description="2 days ago"
                             />

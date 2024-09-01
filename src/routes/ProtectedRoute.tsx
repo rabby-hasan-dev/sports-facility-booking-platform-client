@@ -1,4 +1,4 @@
-import { ReactNode,  } from "react";
+import { ReactNode, } from "react";
 import { Navigate } from "react-router-dom";
 
 
@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children, role }: TProtectRoute) => {
     const dispatch = useAppDispatch();
 
     let user;
-    
+
     if (token) {
         user = verifyToken(token);
     }
@@ -27,14 +27,15 @@ const ProtectedRoute = ({ children, role }: TProtectRoute) => {
 
     if (role !== undefined && role !== (user as TUser)?.role) {
 
-        //  dispatch ==> rendaring problem of sidebar
+
         dispatch(logOut());
-        return <CustomError></CustomError>
+        return <Navigate to="/login" replace={true}></Navigate>;
+
     }
 
     if (!token) {
 
-        return <Navigate to="/login" replace={true}></Navigate>;
+        return <CustomError></CustomError>
     }
 
 

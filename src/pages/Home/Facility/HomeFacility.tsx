@@ -46,13 +46,13 @@ const HomeFacility = () => {
 
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 ">
             <HeadingComponent
                 heading={'Entire Facilities'}
                 subHeading={'Discover and book from our selection of entire facilities.'}
             ></HeadingComponent>
 
-            <div className="flex justify-between items-center">
+            <div className="max-w-7xl mx-auto  flex justify-between items-center">
                 <FSearch ></FSearch>
                 <FFiliter ></FFiliter>
             </div>

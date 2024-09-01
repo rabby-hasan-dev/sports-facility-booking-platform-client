@@ -48,7 +48,7 @@ const CreateAdmin = () => {
                             <PInput placeholder="Input admin password ." name="password" label="Password" type="text"></PInput>
                             <PInput placeholder="Input phone number." name="phone" label="Phone" type="text"></PInput>
                             <PInput placeholder="Input admin address ." name="address" label="Address" type="text"></PInput>
-                            <Button htmlType="submit">Add Admin</Button>
+                            <Button type="primary" htmlType="submit">Add Admin</Button>
                         </PForm>
                     </Row>
 

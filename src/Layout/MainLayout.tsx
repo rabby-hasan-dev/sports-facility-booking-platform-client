@@ -10,42 +10,6 @@ import FooterComponent from '../pages/Shared/Footer/FooterCompo';
 
 const { Header, Content, Footer } = Layout;
 
-const navItems = [
-    {
-        key: 'Home',
-        label: <Link to='/' >Home</Link>
-    },
-
-    {
-        key: 'Facility',
-        label: <Link to='/Facilities' >Facility</Link>
-    },
-
-    {
-        key: 'ContactUs',
-        label: <Link to='/contactUs' >Contact Us</Link>
-    },
-    {
-        key: 'About Us',
-        label: <Link to='/aboutUs' >About Us</Link>
-    },
-    {
-        key: 'Dashboard',
-        label: <Link to='/dashboard' >Dashboard</Link>
-    },
-
-    // {
-    //     key: 'BookingChecker',
-    //     label: <Link to='/bookings-checker' >Booking Checker</Link>
-    // },
-
-    // {
-    //     key: 'Bookings',
-    //     label: <Link to='/bookings' >Bookings</Link>
-    // },
-
-
-]
 
 const MainLayout: React.FC = () => {
     const user = useAppSelector(selectCurrentUser);
@@ -54,9 +18,41 @@ const MainLayout: React.FC = () => {
         token: { colorBgContainer, },
     } = theme.useToken();
 
+
+    const navItems = [
+        {
+            key: 'Home',
+            label: <Link to='/' >Home</Link>
+        },
+
+        {
+            key: 'Facility',
+            label: <Link to='/Facilities' >Facility</Link>
+        },
+
+        {
+            key: 'ContactUs',
+            label: <Link to='/contactUs' >Contact Us</Link>
+        },
+        {
+            key: 'About Us',
+            label: <Link to='/aboutUs' >About Us</Link>
+        },
+
+        user ? {
+            key: 'Dashboard',
+            label: <Link to={`${user?.role}/dashboard`} >Dashboard</Link>
+        } : null
+
+    ]
+
+
+
+
     return (
         <Layout>
             <Header style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
                 <Link to='/' >
                     <div className="demo-logo h-12 w-full" >
                         <img className='h-full w-full' src={brandLogo} alt="brand_logo" />
@@ -68,7 +64,7 @@ const MainLayout: React.FC = () => {
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     items={navItems}
-                    style={{ flex: 1, minWidth: 0, justifyContent: 'center', color:'white' }}
+                    style={{ flex: 1, minWidth: 0, justifyContent: 'center', color: 'white' }}
                 />
                 {
                     user ? <Button type='primary' onClick={() => dispatch(logOut())} >Logout</Button> :
@@ -76,6 +72,7 @@ const MainLayout: React.FC = () => {
                             <Button type='primary' >Login </Button>
                         </Link>
                 }
+
             </Header>
             <Content >
 
@@ -92,7 +89,7 @@ const MainLayout: React.FC = () => {
 
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center', backgroundColor:'#001529' }}>
+            <Footer style={{ textAlign: 'center', backgroundColor: '#001529' }}>
                 <FooterComponent></FooterComponent>
             </Footer>
         </Layout>

@@ -4,6 +4,7 @@
 import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
 import { useDeleteSingleBookingsMutation, useGetAllBookingsByUserQuery } from "../../../../redux/features/bookings/bookingsApi";
 import { IBookings } from "../../../../types/booking.type";
+import { Link } from "react-router-dom";
 
 
 export type TTableData = Pick<IBookings , '_id' | 'facility' | 'date' | 'startTime'| 'endTime'| 'payableAmount'| 'isBooked'>
@@ -60,7 +61,7 @@ const  MyBookings = () => {
         {
             title: 'Amount',
             dataIndex: 'payableAmount',
-            responsive: ['sm', 'md', 'lg', 'xl', 'xxl'],
+            responsive: [ 'lg', 'xl', 'xxl'],
         },
         {
             title: 'Booking Status',
@@ -81,8 +82,10 @@ const  MyBookings = () => {
                 return (
 
                     <Space size={4} >
-                        <Button>Details</Button>
-                        <Button onClick={() => cancleBooking(item.key)} >Delete</Button>
+                     <Link to={item?.key}>
+                     <Button>Details</Button>
+                     </Link>
+                        <Button onClick={() => cancleBooking(item?.key)} >Delete</Button>
                     </Space>
 
                 )

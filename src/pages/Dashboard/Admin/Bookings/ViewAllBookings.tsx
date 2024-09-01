@@ -1,6 +1,7 @@
 import { useGetAllBookingsByAdminQuery } from "../../../../redux/features/bookings/bookingsApi";
 import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
 import { IBookings } from "../../../../types/booking.type";
+import { Link } from "react-router-dom";
 
 
 
@@ -46,7 +47,7 @@ const ViewAllBookings = () => {
             title: 'Consumer Name',
             dataIndex: 'name',
             showSorterTooltip: { target: 'full-header' },
-            
+
 
         },
         {
@@ -57,6 +58,7 @@ const ViewAllBookings = () => {
         {
             title: 'Date',
             dataIndex: 'date',
+            responsive: ['xl', 'xxl']
         },
         {
             title: 'Start Time',
@@ -71,7 +73,7 @@ const ViewAllBookings = () => {
         {
             title: 'Amount',
             dataIndex: 'payableAmount',
-            responsive: [ 'xl', 'xxl'],
+            responsive: ['xl', 'xxl'],
         },
         {
             title: 'Booking Status',
@@ -99,14 +101,18 @@ const ViewAllBookings = () => {
         {
             title: 'transactionId',
             dataIndex: 'transactionId',
-            responsive: [ 'xxl'],
+            responsive: ['xxl'],
         },
         {
             title: 'Action',
             key: "x",
-            render: (item) => {
+            render: (item) => {  
+                return (
+                    <Link to={item?.key} >
+                        <Button >Details</Button>
+                    </Link>
 
-                return (<Button>Details</Button>)
+                )
 
 
             },

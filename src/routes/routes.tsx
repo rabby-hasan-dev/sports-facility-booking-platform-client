@@ -17,11 +17,7 @@ const router = createBrowserRouter([
         errorElement: <NotFound></NotFound>,
         children: homeRoutes
     },
-    {
-        path: "/dashboard",
-        element:<Dashboard></Dashboard>
-        
-    },
+
     {
         path: "/admin",
         element: <ProtectedRoute role="admin">

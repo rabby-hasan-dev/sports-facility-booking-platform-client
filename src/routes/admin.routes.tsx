@@ -1,4 +1,5 @@
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
+import BookingDetailsAdmin from "../pages/Dashboard/Admin/Bookings/BookingDetailsAdmin";
 import ViewAllBookings from "../pages/Dashboard/Admin/Bookings/ViewAllBookings";
 import CreateFacility from "../pages/Dashboard/Admin/Facility/CreateFacility";
 import Facility from "../pages/Dashboard/Admin/Facility/Facility";
@@ -44,7 +45,12 @@ export const adminPaths = [
                 name: "View All Bookings",
                 path: 'view-bookings-admin',
                 element: <ViewAllBookings></ViewAllBookings>,
+            },         
+            {
+                path: 'view-bookings-admin/:bookingId',
+                element: <BookingDetailsAdmin></BookingDetailsAdmin>,
             },
+            
 
 
         ]

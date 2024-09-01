@@ -52,7 +52,7 @@ const Login = () => {
                     <PForm onSubmit={onSubmit} defaultValues={defaultValues}>
                         <PInput name="email" label="Email" type="text"></PInput>
                         <PInput name="password" label="Password" type="text"></PInput>
-                        <Button htmlType="submit" style={{width:'100%'}}>Login</Button>
+                        <Button type="primary" htmlType="submit" style={{width:'100%'}}>Login</Button>
                     </PForm>
                 </Row>
 
