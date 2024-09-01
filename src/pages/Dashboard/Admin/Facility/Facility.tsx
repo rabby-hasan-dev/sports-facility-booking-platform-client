@@ -9,7 +9,6 @@ import { IFacilities } from "../../../../types/faicility.type";
 
 
 
-
 export type TTableData = Pick<IFacilities, '_id' | 'name' | 'description' | 'image' | 'location' | 'pricePerHour'>
 
 

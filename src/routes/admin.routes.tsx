@@ -3,9 +3,7 @@ import ViewAllBookings from "../pages/Dashboard/Admin/Bookings/ViewAllBookings";
 import CreateFacility from "../pages/Dashboard/Admin/Facility/CreateFacility";
 import Facility from "../pages/Dashboard/Admin/Facility/Facility";
 import UpdateFacility from "../pages/Dashboard/Admin/Facility/UpdateFacility";
-import PaymentInfoAdmin from "../pages/Dashboard/Admin/Payment/PaymentInfoAdmin";
 import CreateAdmin from "../pages/Dashboard/Admin/UserManagement/CreateAdmin";
-
 
 
 export const adminPaths = [
@@ -53,15 +51,19 @@ export const adminPaths = [
 
     },
     {
-        name: "Payment",
-        path: 'payment-info',
-        element: <PaymentInfoAdmin></PaymentInfoAdmin>,
+        name: "User Management",
+        children: [
+            {
+                name: "Add Admin",
+                path: 'create-admin',
+                element: <CreateAdmin></CreateAdmin>,
+            },
+
+
+        ]
+
     },
-    {
-        name: "Add Admin",
-        path: 'create-admin',
-        element: <CreateAdmin></CreateAdmin>,
-    },
+   
 
 
 ]

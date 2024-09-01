@@ -46,6 +46,7 @@ const ViewAllBookings = () => {
             title: 'Consumer Name',
             dataIndex: 'name',
             showSorterTooltip: { target: 'full-header' },
+            
 
         },
         {
@@ -98,7 +99,7 @@ const ViewAllBookings = () => {
         {
             title: 'transactionId',
             dataIndex: 'transactionId',
-            responsive: [  'xl', 'xxl'],
+            responsive: [ 'xxl'],
         },
         {
             title: 'Action',

@@ -18,7 +18,7 @@ export const userPaths = [
     },
 
     {
-        name: "Bookings",
+        name: "My Bookings",
         path: 'user-bookings',
         element: <MyBookings></MyBookings>,
     },
