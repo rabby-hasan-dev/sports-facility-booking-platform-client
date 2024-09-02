@@ -35,13 +35,13 @@ const Login = () => {
             const res = await login(userInfo).unwrap();
             const user = verifyToken(res?.token) as TUser;
             if (user?.role === USER_ROLE.user || user?.role === USER_ROLE.admin || user?.role === USER_ROLE.superAdmin) {
-                dispatch(setUser({ user: user, token: res.token }));
+                dispatch(setUser({ user: { ...user, name: res?.data?.name }, token: res.token }));
                 toast.success(res?.message, { id: toastId, duration: 2000 });
                 navigate('/')
             }
         } catch (error) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
-            // console.log(error);
+          
         }
 
 

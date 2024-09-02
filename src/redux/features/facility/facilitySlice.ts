@@ -7,7 +7,7 @@ import { RootState } from "../../store";
 const initialState = {
     searchTerm: '',
     priceRange: {priceRange:[0, 1000]},
-    pageSize:3,
+    pageSize:10,
     currentPage:1,
 
 }

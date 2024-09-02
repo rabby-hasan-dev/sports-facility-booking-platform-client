@@ -23,7 +23,7 @@ type TTimeSlots = {
 
 const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
   const [params, setParams] = useState<TQueryParamsBookingsChecker[] | []>([]);
-  const { data: bookingChecker, isFetching } = useBookingCheckerQuery(params, { skip: !params.length });
+  const { data: bookingChecker, isFetching, error } = useBookingCheckerQuery(params, { skip: !params.length });
 
   useEffect(() => {
     let toastId: any;
@@ -42,7 +42,11 @@ const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
 
   }, [isFetching]);
 
- 
+  if (error) {
+    toast.error('Booking checking something Error');
+  }
+
+
 
   const submitTimeChecker: SubmitHandler<FieldValues> = async (data) => {
 
@@ -69,7 +73,7 @@ const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
           <Flex justify="space-between" gap={8}>
 
             <PDatePicker name="date"></PDatePicker>
-            <Button type="primary"   htmlType="submit" size="large" >Check Availibility</Button>
+            <Button type="primary" htmlType="submit" size="large" >Check Availibility</Button>
 
           </Flex>
         </PForm>

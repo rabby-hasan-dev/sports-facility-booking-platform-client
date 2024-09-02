@@ -24,18 +24,20 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
             const res = await createBookings(bookingData);
 
             if (res?.data.success) {
-                
+
                 toast.loading("Payment Processing ....")
                 window.location.href = res.data?.data?.payment_url;
             } else {
-               
+                console.log(res);
                 toast.error('Booking  failed!')
             }
 
 
 
         } catch (error) {
-            console.log("booking faild", error);
+          
+            toast.error(<p>{error?.data?.message} </p>)
+
 
         }
 
@@ -50,7 +52,7 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
                 <PDatePicker label="Date" name="date"></PDatePicker>
                 <PTimePicker name="startTime" label="Start Time" />
                 <PTimePicker name="endTime" label="End Time" />
-                <Button  type="primary" htmlType="submit">Proced to Pay</Button>
+                <Button type="primary" htmlType="submit">Proced to Pay</Button>
 
             </PForm>
         </Card>

@@ -33,10 +33,6 @@ const MyBookings = () => {
 
 
 
-
-
-
-
     const tableData = allBookings?.data?.map(({
         _id,
         facility,
@@ -129,14 +125,6 @@ const MyBookings = () => {
         },
     ];
 
-    // const onChange: TableProps<any>['onChange'] = (_pagination, filters, _sorter, extra) => {
-
-    //     console.log({filters, extra})
-
-
-
-
-    // };
 
 
 
@@ -147,7 +135,6 @@ const MyBookings = () => {
                 loading={isFetching}
                 dataSource={tableData}
                 pagination={false}
-                // onChange={onChange}
                 showSorterTooltip={{ target: 'sorter-icon' }}
             />
         </div>
