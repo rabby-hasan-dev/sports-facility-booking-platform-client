@@ -1,5 +1,5 @@
 import { useGetAllBookingsByAdminQuery } from "../../../../redux/features/bookings/bookingsApi";
-import { Button, Space, Table, TableColumnsType, Tag, } from "antd";
+import { Button, Table, TableColumnsType, Tag, } from "antd";
 import { IBookings } from "../../../../types/booking.type";
 import { Link } from "react-router-dom";
 

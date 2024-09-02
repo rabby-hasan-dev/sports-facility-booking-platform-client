@@ -4,7 +4,7 @@ import { toast } from "sonner";
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 
-export const uploadImage = async (data: any) => {
+export const uploadImage = async (data:File) => {
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
     let imageUrl;
     const formData = new FormData();

@@ -1,25 +1,16 @@
 import { Avatar,  Flex, Layout, theme } from 'antd';
-
-
 import { Outlet } from 'react-router-dom';
-
-
-
-
 import Sidebar from './Sidebar';
 import { BellOutlined, UserOutlined } from '@ant-design/icons';
-import Icon from '@ant-design/icons/lib/components/Icon';
 
 
 const { Header, Content, } = Layout;
 
 
 const Dashboard = () => {
-
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-
 
 
 

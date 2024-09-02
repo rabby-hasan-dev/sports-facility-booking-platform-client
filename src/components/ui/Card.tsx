@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const { Meta } = Card;
 
 type TCardProps = {
-    loading: any;
+    loading: boolean;
     id?: string;
     name: string;
     pricePerHour?: number;

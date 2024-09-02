@@ -6,7 +6,7 @@ import HeadingComponent from "../../../../components/ui/HeadingComponent";
 const FAQ = () => {
 
     const [faq, setFaq] = useState([]);
-
+    
     useEffect(() => {
 
         const faqApi = async () => {
@@ -22,7 +22,6 @@ const FAQ = () => {
 
     }, [])
 
-
     const items: CollapseProps['items'] = faq?.map((item, index) => (
         {
             key: index + 1,
@@ -31,13 +30,6 @@ const FAQ = () => {
 
         }
     ))
-
-
-
-
-
-
-
 
     return (
 

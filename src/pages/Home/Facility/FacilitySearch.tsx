@@ -11,7 +11,7 @@ type SearchProps = GetProps<typeof Input.Search>;
 const FacilitySearch = () => {
     const dispatch=useAppDispatch();
     
-    const handleSearch: SearchProps['onSearch'] = (value, _e, info) =>{    
+    const handleSearch: SearchProps['onSearch'] = (value) =>{    
         dispatch(setSearchTerm(value))
        
     } 

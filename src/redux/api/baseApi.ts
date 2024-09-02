@@ -5,7 +5,6 @@ import { logOut, setUser } from '../features/auth/authSlice';
 import { toast } from 'sonner';
 
 
-
 const baseQuery = fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_SERVER_API_LINK}/api`,
     credentials: 'include',
@@ -28,7 +27,6 @@ const baseQuery = fetchBaseQuery({
 })
 
 const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType> = async (arg, api, extraOptions): Promise<any> => {
-
     let result = await baseQuery(arg, api, extraOptions);
 
     // console.log('base api inside ==>', result)

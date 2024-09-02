@@ -8,6 +8,7 @@ import { useAppSelector } from "../../../redux/hooks";
 import { useCurrentPage, usePageSize, usePriceRange, useSearchTerm } from "../../../redux/features/facility/facilitySlice";
 import FacilityPagination from "./FacilityPagination";
 import { useEffect, useMemo, useState } from "react";
+import { IFacilities } from "../../../types/faicility.type";
 
 
 
@@ -21,11 +22,11 @@ const HomeFacility = () => {
 
     const filteredFacilities = useMemo(() => {
 
-        return allFacility?.data?.filter((facility: any) =>
+        return allFacility?.data?.filter((facility:IFacilities) =>
             facility.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             facility.location.toLowerCase().includes(searchTerm.toLowerCase())
         )
-            .filter((facility: any) =>
+            .filter((facility: IFacilities) =>
                 facility.pricePerHour >= filters.priceRange[0] && facility.pricePerHour <= filters.priceRange[1]
             ) || [];
 

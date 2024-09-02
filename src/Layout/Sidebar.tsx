@@ -1,4 +1,4 @@
-import { Image, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import { sidebarItemsGenerator } from '../utils/sidebarItemsGenerator';
 import { adminPaths } from '../routes/admin.routes';
 import { userPaths } from '../routes/user.routes';
