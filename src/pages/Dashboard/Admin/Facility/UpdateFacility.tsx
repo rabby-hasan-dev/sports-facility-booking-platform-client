@@ -1,5 +1,5 @@
 
-import { Button, Form, Input, Row } from "antd";
+import { Button, Form, Input, Row, Spin } from "antd";
 
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { useGetAllFacilityQuery, useUpdateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
@@ -8,42 +8,63 @@ import PForm from "../../../../components/form/PForm";
 import PInput from "../../../../components/form/PInput";
 import { useParams } from "react-router-dom";
 import { IFacilities } from "../../../../types/faicility.type";
+import { toast } from "sonner";
+import { TResponse } from "../../../../types";
 
 
 const UpdateFacility = () => {
     const { id } = useParams();
     const [updateFacility] = useUpdateFacilityMutation();
-    const { data: facility } = useGetAllFacilityQuery(undefined, { skip: !id });
+    const { data: facility, isLoading, error } = useGetAllFacilityQuery(undefined, { skip: !id });
 
     const findSingleFacility = facility?.data?.find((item: IFacilities) => item._id === id);
 
 
 
+    if (isLoading) {
+        return <Spin></Spin>;
+    }
+
+    if (error) {
+        return toast.error('Error loading facility')
+    }
+
+    if (!findSingleFacility) {
+        return toast.error('Facility not found');
+    }
+
+
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+
         let img;
-        if (data?.image) {
+
+        if (data?.image && typeof data.image !== "string") {
             img = await uploadImage(data?.image);
-        }
 
-        const facilityInfo = {
-            ...data,
-            pricePerHour: Number(data.pricePerHour),
-            image: img
+        } else {
+            img = undefined;
         }
-
-        console.log(facility);
 
         try {
-            const res = await updateFacility({ id, data: facilityInfo });
-            console.log(res);
-        } catch (error) {
 
+            const facilityInfo = {
+                ...data,
+                pricePerHour: Number(data.pricePerHour),
+                image: img || findSingleFacility?.image
+
+            }
+
+            const res = await updateFacility({ id, data: facilityInfo }) as TResponse<any>
+            if (res?.data?.success) {
+                toast.success(res?.data?.message)
+            }
+            console.log('create facility ', res);
+        } catch (error) {
+            toast.error(error?.data?.message, { duration: 2000 })
             console.log(error);
         }
-
-
 
 
 

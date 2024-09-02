@@ -28,7 +28,7 @@ const CardComponent = ({ id, loading, image, name, pricePerHour, description }: 
             >
                 {
                     description ? <Meta title={`Name: ${name}`} description={description} />
-                        : <Meta title={`Name: ${name}`} description={`Price PerHour: ${pricePerHour}`} />
+                        : <Meta title={name} description={`Price: $ ${pricePerHour} /hour`} />
 
                 }
               <div className='mt-5'>

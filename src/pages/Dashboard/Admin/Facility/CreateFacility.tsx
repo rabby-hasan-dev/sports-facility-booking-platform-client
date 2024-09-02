@@ -4,34 +4,52 @@ import PInput from "../../../../components/form/PInput";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { useCreateFacilityMutation } from "../../../../redux/features/facility/facilityApi";
 import { uploadImage } from "../../../../utils/imageUploader";
-
-
+import { toast } from "sonner";
+import { TResponse } from "../../../../types";
 const CreateFacility = () => {
 
     const [createFacility] = useCreateFacilityMutation();
 
 
-   
+
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        console.log('create facility ', data);
-        const img = await uploadImage(data?.image);
 
+        let img;
+        if (data?.image && typeof data.image !== "string") {
+            img = await uploadImage(data?.image);
 
-        const facilityInfo = {
-            ...data,
-            pricePerHour: Number(data.pricePerHour),
-            image: img
+        } else {
+            img = undefined;
         }
 
-        console.log('create facility ', facilityInfo);
         try {
-            const res = await createFacility(facilityInfo);
-            console.log(res);
-        } catch (error) {
 
+            const facilityInfo = {
+                ...data,
+                pricePerHour: Number(data.pricePerHour),
+                image: img
+            }
+            const res = await createFacility(facilityInfo) as TResponse<any>
+            if (res?.data?.success) {
+                toast.success(res?.data?.message)
+            } else {
+                console.log(res);
+                const error = res?.error?.data?.errorMessages[0]?.path === 'image';
+                if (error) {
+                    toast.error('please! upload image');
+                } else {
+                    toast.error('Something went wrong!');
+                }
+
+            }
+
+        } catch (error) {
             console.log(error);
+            toast.error(error?.data?.message, { duration: 2000 })
+
+
         }
 
 

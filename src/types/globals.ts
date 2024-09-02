@@ -4,8 +4,9 @@ import React from "react";
 
 export type TError = {
     data: {
+        errorMessages:[any]
         message: string;
-        stack: string;
+        stack: string | null;
         success: boolean;
     };
     status: number;
@@ -22,15 +23,15 @@ export type TMeta = {
 export type TResponse<T> = {
     data?: T;
     error?: TError;
-    meta?:TMeta;
-    success:boolean;
-    message:string;
+    meta?: TMeta;
+    success: boolean;
+    message: string;
 }
 
-export type TResponseRedux<T>= TResponse<T> & BaseQueryApi;
+export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 
 
-export type TQueryParams={
-    name:string;
-    value: boolean| React.Key
+export type TQueryParams = {
+    name: string;
+    value: boolean | React.Key
 }

@@ -54,7 +54,7 @@ const Login = () => {
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
                 <Row justify={"center"} align={"middle"} >
-                    <PForm onSubmit={onSubmit} defaultValues={undefined} >
+                    <PForm onSubmit={onSubmit} defaultValues={defaultValues} >
                         <PInput name="email" label="Email" type="email"></PInput>
                         <PInput name="password" label="Password" type="text"></PInput>
                         <Button type="primary" htmlType="submit" style={{ width: '100%' }}>Login</Button>

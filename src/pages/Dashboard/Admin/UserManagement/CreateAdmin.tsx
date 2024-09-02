@@ -5,6 +5,7 @@ import { useSignupMutation } from "../../../../redux/features/auth/authApi";
 import { USER_ROLE } from "../../../../constant/userConstant";
 import PForm from "../../../../components/form/PForm";
 import PInput from "../../../../components/form/PInput";
+import { toast } from "sonner";
 
 
 
@@ -14,16 +15,24 @@ const CreateAdmin = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 
-        const CreateAdminData = {
-            ...data,
-            role: USER_ROLE.admin
-        }
+        const toastId = toast.loading('loading ....')
         try {
-            const res = await CreateAdmin(CreateAdminData);
+
+            const CreateAdminData = {
+                ...data,
+                role: USER_ROLE.admin
+            }
+
+
+            const res = await CreateAdmin(CreateAdminData).unwrap();
             console.log(res);
+            if (res?.success) {
+                toast.success(res?.message, { id: toastId, duration: 2000 })
+
+            }
 
         } catch (error) {
-            console.log(error);
+            toast.error(error?.data?.message, { id: toastId, duration: 2000 })
         }
     }
 
@@ -36,9 +45,9 @@ const CreateAdmin = () => {
                     <Row justify={"center"} align={"middle"}  >
                         <PForm onSubmit={onSubmit}>
                             <PInput placeholder="Input admin name ." name="name" label="Name" type="text"></PInput>
-                            <PInput placeholder="Input admin email ." name="email" label="Email" type="text"></PInput>
+                            <PInput placeholder="Input admin email ." name="email" label="Email" type="email"></PInput>
                             <PInput placeholder="Input admin password ." name="password" label="Password" type="text"></PInput>
-                            <PInput placeholder="Input phone number." name="phone" label="Phone" type="text"></PInput>
+                            <PInput placeholder="Input phone number." name="phone" label="Phone" type="number"></PInput>
                             <PInput placeholder="Input admin address ." name="address" label="Address" type="text"></PInput>
                             <Button type="primary" htmlType="submit">Add Admin</Button>
                         </PForm>
