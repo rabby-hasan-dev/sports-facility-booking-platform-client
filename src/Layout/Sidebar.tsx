@@ -8,6 +8,8 @@ import { useAppSelector } from '../redux/hooks';
 import { verifyToken } from '../utils/verifyToken';
 import { Link } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
+import { TSidebarItem } from '../types';
+
 
 const { Sider } = Layout;
 
@@ -24,13 +26,14 @@ const Sidebar = () => {
 
     // const role = "admin";
     // const role = "user";
-    let sidebarItems ;
+    let sidebarItems;
 
 
 
     switch ((user as TUser)?.role) {
         case USER_ROLE.admin:
             sidebarItems = sidebarItemsGenerator(adminPaths, USER_ROLE.admin);
+
             break;
         case USER_ROLE.user:
             sidebarItems = sidebarItemsGenerator(userPaths, USER_ROLE.user);
@@ -39,7 +42,7 @@ const Sidebar = () => {
             break;
     }
 
-
+    console.log(sidebarItems);
 
 
     return (
@@ -64,6 +67,7 @@ const Sidebar = () => {
 
                 </Link>
             </div>
+            {/* @ts-ignore */}
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>
     );

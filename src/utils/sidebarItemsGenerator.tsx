@@ -19,7 +19,7 @@ export const sidebarItemsGenerator = (items: TUserPath[], role: string) => {
 
                 key: (item.name) as string,
                 label: item.name,
-                children: item.children.map((child) => {
+                children: item.children.map((child ) => {
 
                     if (child.name) {
                         return {
