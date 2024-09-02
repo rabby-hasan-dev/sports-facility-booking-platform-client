@@ -4,33 +4,34 @@ import PInput from "../../components/form/PInput";
 import { Button, Row } from "antd";
 import { USER_ROLE } from "../../constant/userConstant";
 import { useSignupMutation } from "../../redux/features/auth/authApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 
 const Register = () => {
     const [signUp] = useSignupMutation()
-
-    // const defaultValues = {
-    //     name: "Programming Hero",
-    //     email: "web@programming-hero1.com",
-    //     password: "programming-hero",
-    //     phone: "01322901105",
-    //     // role: "user",
-    //     address: "Level-4, 34, Awal Centre, Banani, Dhaka"
-    // }
+    const navigate = useNavigate();
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        const signUpData = {
-            ...data,
-            role: USER_ROLE.user
-        }
+        const toastId = toast.loading('loading ....')
+
+
         try {
-            const res = await signUp(signUpData);
-            console.log(res);
+            const signUpData = {
+                ...data,
+                role: USER_ROLE.user
+            }
+            const res = await signUp(signUpData).unwrap();
+            if (res?.success) {
+                toast.success(res?.message, { id: toastId, duration: 2000 })
+                navigate('/')
+
+            }
 
         } catch (error) {
-            console.log(error);
+            toast.error(error?.data?.message, { id: toastId, duration: 2000 })
+
         }
     }
 
@@ -43,11 +44,11 @@ const Register = () => {
                 <Row justify={"center"} align={"middle"}  >
                     <PForm onSubmit={onSubmit} defaultValues={undefined} >
                         <PInput name="name" label="Name" type="text"></PInput>
-                        <PInput name="email" label="Email" type="text"></PInput>
+                        <PInput name="email" label="Email" type="email"></PInput>
                         <PInput name="password" label="Password" type="text"></PInput>
-                        <PInput name="phone" label="Phone" type="text"></PInput>
+                        <PInput name="phone" label="Phone" type="number"></PInput>
                         <PInput name="address" label="Address" type="text"></PInput>
-                        <Button type="primary" htmlType="submit"  style={{width:'100%'}} >Sign Up</Button>
+                        <Button type="primary" htmlType="submit" style={{ width: '100%' }} >Sign Up</Button>
                     </PForm>
                 </Row>
 
@@ -56,12 +57,12 @@ const Register = () => {
                         <span className="text-sm text-gray-700">
                             Already have an account?
                             <Link to='/login' className="text-indigo-500 hover:underline">
-                               Login
+                                Login
                             </Link>
                         </span>
                     </div>
                     <div className="text-center">
-                       
+
                     </div>
                 </Row>
 

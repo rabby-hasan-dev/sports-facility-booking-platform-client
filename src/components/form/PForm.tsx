@@ -10,7 +10,7 @@ type TPropsForm = {
 
 type TFormCofing = {
     defaultValues?: Record<string, any>;
-    
+
 
 }
 
@@ -18,14 +18,14 @@ type TFormCofing = {
 
 
 
-const PForm = ({ onSubmit, children, defaultValues,  }: TPropsForm) => {
-    
+const PForm = ({ onSubmit, children, defaultValues, }: TPropsForm) => {
+
     const formConfig: TFormCofing = {};
-    
+
     if (defaultValues) {
         formConfig['defaultValues'] = defaultValues;
     }
-    
+
     const methods = useForm(formConfig);
     const submitFormData: SubmitHandler<FieldValues> = (data) => {
         onSubmit(data)
@@ -35,7 +35,7 @@ const PForm = ({ onSubmit, children, defaultValues,  }: TPropsForm) => {
 
     return (
         <FormProvider  {...methods}>
-            <Form  layout="vertical"   onFinish={methods.handleSubmit(submitFormData)}> {children} </Form>
+            <Form layout="vertical"  onFinish={methods.handleSubmit(submitFormData)}>{children} </Form>
         </FormProvider>
     );
 };

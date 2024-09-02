@@ -7,7 +7,7 @@ import { IFacilities } from "../../../../types/faicility.type";
 const FeaturedFacility = () => {
     const { data: allFacility, isFetching } = useGetAllFacilityQuery(undefined);
 
-   
+    
 
     return (
         <>

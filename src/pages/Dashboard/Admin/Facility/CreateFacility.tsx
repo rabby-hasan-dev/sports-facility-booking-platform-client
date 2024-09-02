@@ -11,12 +11,7 @@ const CreateFacility = () => {
     const [createFacility] = useCreateFacilityMutation();
 
 
-    const defaultFacilityData = {
-        "name": "Tennis Court",
-        "description": "Outdoor tennis court with synthetic surface.",
-        "pricePerHour": 30,
-        "location": "456 Sports Ave, Springfield"
-    }
+   
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -55,7 +50,7 @@ const CreateFacility = () => {
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create Facility</h2>
 
                 <Row justify={"center"} align={"middle"}  >
-                    <PForm onSubmit={onSubmit} defaultValues={defaultFacilityData}>
+                    <PForm onSubmit={onSubmit} >
                         <PInput name="name" label="Name" type="text"></PInput>
                         <PInput name="description" label="Description" type="text"></PInput>
                         <PInput name="pricePerHour" label="Price PerHour" type="number"></PInput>

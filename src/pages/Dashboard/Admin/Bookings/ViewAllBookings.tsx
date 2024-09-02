@@ -12,9 +12,9 @@ export type TTableData = Pick<IBookings, '_id' | 'user' | 'paymentStatus' | 'tra
 
 
 const ViewAllBookings = () => {
+
     const { data: allBookings, isFetching } = useGetAllBookingsByAdminQuery(undefined);
-
-
+    
     const tableData = allBookings?.data?.map(({
         _id,
         user,
@@ -38,8 +38,6 @@ const ViewAllBookings = () => {
         paymentStatus,
         transactionId
     }))
-
-
 
 
     const columns: TableColumnsType<TTableData> = [
@@ -119,17 +117,7 @@ const ViewAllBookings = () => {
         },
     ];
 
-    // const onChange: TableProps<any>['onChange'] = (_pagination, filters, _sorter, extra) => {
-
-    //     console.log({filters, extra})
-
-
-
-
-    // };
-
-
-
+ 
     return (
         <div>
             <Table
@@ -137,7 +125,6 @@ const ViewAllBookings = () => {
                 loading={isFetching}
                 dataSource={tableData}
                 pagination={false}
-                // onChange={onChange}
                 showSorterTooltip={{ target: 'sorter-icon' }}
             />
         </div>

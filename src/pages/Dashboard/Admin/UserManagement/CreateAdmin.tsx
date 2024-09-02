@@ -11,14 +11,6 @@ import PInput from "../../../../components/form/PInput";
 const CreateAdmin = () => {
     const [CreateAdmin] = useSignupMutation();
 
-    const defaultValues = {
-        name: "Programming Hero",
-        email: "web@programming-hero1.com",
-        password: "programming-hero",
-        phone: "01322901105",
-        role: "user",
-        address: "Level-4, 34, Awal Centre, Banani, Dhaka"
-    }
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 
