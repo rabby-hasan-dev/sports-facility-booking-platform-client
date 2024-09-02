@@ -1,6 +1,7 @@
 import { Collapse, CollapseProps } from "antd";
 import { useEffect, useState } from "react";
 import HeadingComponent from "../../../../components/ui/HeadingComponent";
+import { IFaq } from "../../../../types/extra.type";
 
 
 const FAQ = () => {
@@ -22,7 +23,7 @@ const FAQ = () => {
 
     }, [])
 
-    const items: CollapseProps['items'] = faq?.map((item, index) => (
+    const items: CollapseProps['items'] = faq?.map((item:IFaq, index) => (
         {
             key: index + 1,
             label: item.question,

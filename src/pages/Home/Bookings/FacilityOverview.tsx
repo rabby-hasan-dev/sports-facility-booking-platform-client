@@ -1,11 +1,12 @@
 import { useGetAllFacilityQuery } from "../../../redux/features/facility/facilityApi";
+import { IFacilities } from "../../../types/faicility.type";
 import { TFacilityIdProps } from "./Bookings";
 
 
 const FacilityOverview = ({facilityId}:TFacilityIdProps) => {
   const { data: facilities } = useGetAllFacilityQuery(undefined);
 
-  const facility = facilities?.data?.find((item) => item._id === facilityId);
+  const facility = facilities?.data?.find((item:IFacilities) => item._id === facilityId);
   return (
     <>
       <div className="bg-gray-100 p-4 rounded mb-4">

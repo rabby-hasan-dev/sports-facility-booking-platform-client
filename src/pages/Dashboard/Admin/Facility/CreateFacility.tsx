@@ -35,7 +35,6 @@ const CreateFacility = () => {
             if (res?.data?.success) {
                 toast.success(res?.data?.message)
             } else {
-                console.log(res);
                 const error = res?.error?.data?.errorMessages[0]?.path === 'image';
                 if (error) {
                     toast.error('please! upload image');
@@ -45,8 +44,8 @@ const CreateFacility = () => {
 
             }
 
-        } catch (error) {
-            console.log(error);
+        } catch (error:any) {
+            
             toast.error(error?.data?.message, { duration: 2000 })
 
 

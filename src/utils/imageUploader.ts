@@ -23,7 +23,7 @@ export const uploadImage = async (data:File) => {
             toast.success('Image process successfull', { id: toastId, duration: 1000 })
             imageUrl = imgURL
         }
-    } catch (error) {
+    } catch (error:any) {
         toast.error(error?.data?.message, { id: toastId, duration: 1000 })
 
     }

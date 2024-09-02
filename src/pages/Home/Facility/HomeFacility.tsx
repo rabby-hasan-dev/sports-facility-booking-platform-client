@@ -43,7 +43,7 @@ const HomeFacility = () => {
     }, [filteredFacilities, currentPage, pageSize])
 
 
-
+   
 
 
     return (
@@ -59,7 +59,7 @@ const HomeFacility = () => {
             </div>
 
             <FacilityList filteredFacilities={paginatedFacilities} isFetching={isFetching} ></FacilityList>
-            <FacilityPagination></FacilityPagination>
+            <FacilityPagination filteredFacilities={filteredFacilities}  ></FacilityPagination>
 
         </div>
     );

@@ -23,13 +23,14 @@ const Register = () => {
                 role: USER_ROLE.user
             }
             const res = await signUp(signUpData).unwrap();
+            console.log(res);
             if (res?.success) {
                 toast.success(res?.message, { id: toastId, duration: 2000 })
                 navigate('/')
 
             }
 
-        } catch (error) {
+        } catch (error:any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
 
         }

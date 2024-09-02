@@ -1,5 +1,5 @@
 
-import { TQueryParamsBookingsChecker } from "../../../pages/Home/Bookings/Bookings";
+import { TQueryParamsBookingsChecker } from "../../../pages/Home/Bookings/AvailabilityChecker";
 import { baseApi } from "../../api/baseApi";
 
 

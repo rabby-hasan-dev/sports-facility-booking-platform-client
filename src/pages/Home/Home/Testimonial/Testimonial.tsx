@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TestimonialCard from "../../../../components/ui/TestimonialCard";
+import { ITestimonial } from "../../../../types/extra.type";
 
 
 
@@ -31,7 +32,7 @@ testimonialApi();
             What Our Believer Say
           </h2>
           <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial:ITestimonial) => (
               <TestimonialCard key={testimonial?.id} testimonial={testimonial} />
             ))}
           </div>

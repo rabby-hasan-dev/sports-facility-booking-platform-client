@@ -8,6 +8,7 @@ import { useAppSelector } from '../redux/hooks';
 import { verifyToken } from '../utils/verifyToken';
 import { Link } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
+
 const { Sider } = Layout;
 
 
@@ -23,7 +24,7 @@ const Sidebar = () => {
 
     // const role = "admin";
     // const role = "user";
-    let sidebarItems;
+    let sidebarItems ;
 
 
 

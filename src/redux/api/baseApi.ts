@@ -27,18 +27,22 @@ const baseQuery = fetchBaseQuery({
 })
 
 const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType> = async (arg, api, extraOptions): Promise<any> => {
-    let result = await baseQuery(arg, api, extraOptions);
+    let result = await baseQuery(arg, api, extraOptions)
 
     // console.log('base api inside ==>', result)
 
     if (result.error?.status === 404) {
-        toast.error(result.error.data.message)
+        const errorData = result.error.data as { message: string }
+        // toast.error(result.error.data.message)
+        toast.error(errorData.message)
 
 
     }
 
     if (result.error?.status === 403) {
-        toast.error(result.error.data.message)
+        const errorData = result.error.data as { message: string }
+        // toast.error(result.error.data.message)
+        toast.error(errorData.message)
     }
     if (result.error?.status === 401) {
         // send Refresh Token

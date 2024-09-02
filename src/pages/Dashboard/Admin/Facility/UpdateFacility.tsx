@@ -61,9 +61,9 @@ const UpdateFacility = () => {
                 toast.success(res?.data?.message)
             }
             console.log('create facility ', res);
-        } catch (error) {
+        } catch (error:any) {
             toast.error(error?.data?.message, { duration: 2000 })
-            console.log(error);
+            
         }
 
 

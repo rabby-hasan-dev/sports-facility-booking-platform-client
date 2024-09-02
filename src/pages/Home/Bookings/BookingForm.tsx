@@ -34,9 +34,9 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
 
 
 
-        } catch (error) {
+        } catch (error:any) {
           
-            toast.error(<p>{error?.data?.message} </p>)
+            toast.error(error?.data?.message)
 
 
         }

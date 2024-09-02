@@ -18,10 +18,7 @@ const Login = () => {
     const [login] = useLoginMutation();
     const dispatch = useAppDispatch();
 
-    const defaultValues = {
-        email: 'web@programming-hero.com',
-        password: 'programming-hero'
-    }
+  
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const toastId = toast.loading('loading ....')
 
@@ -39,7 +36,7 @@ const Login = () => {
                 toast.success(res?.message, { id: toastId, duration: 2000 });
                 navigate('/')
             }
-        } catch (error) {
+        } catch (error:any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
           
         }
@@ -54,7 +51,7 @@ const Login = () => {
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
                 <Row justify={"center"} align={"middle"} >
-                    <PForm onSubmit={onSubmit} defaultValues={defaultValues} >
+                    <PForm onSubmit={onSubmit} >
                         <PInput name="email" label="Email" type="email"></PInput>
                         <PInput name="password" label="Password" type="text"></PInput>
                         <Button type="primary" htmlType="submit" style={{ width: '100%' }}>Login</Button>

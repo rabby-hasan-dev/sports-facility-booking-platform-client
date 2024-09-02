@@ -45,7 +45,7 @@ Technologies Used
 *   **Redux**: For managing form state and validation.
 *   **React Hook Form**: For managing form state and validation.
 
-*   emailjs,moment, jwt decode,react lefltet,sonner, redux persist
+*  **More Technology**  emailjs,moment, jwt decode,react lefltet,sonner, redux persist
     
 
 Installation
