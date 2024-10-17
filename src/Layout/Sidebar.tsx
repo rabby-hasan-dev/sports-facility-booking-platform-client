@@ -8,7 +8,7 @@ import { useAppSelector } from '../redux/hooks';
 import { verifyToken } from '../utils/verifyToken';
 import { Link } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
-import { TSidebarItem } from '../types';
+
 
 
 const { Sider } = Layout;
