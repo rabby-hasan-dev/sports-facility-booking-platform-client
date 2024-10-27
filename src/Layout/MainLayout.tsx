@@ -1,7 +1,7 @@
 
 
 import { Button, Layout, Menu, theme } from 'antd';
-import { Link,Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import brandLogo from '../assets/images/brandLogo.png'
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { logOut, selectCurrentUser, } from '../redux/features/auth/authSlice';
@@ -80,7 +80,6 @@ const MainLayout: React.FC = () => {
                     style={{
                         background: colorBgContainer,
                         minHeight: '100vh',
-                        padding: 24,
 
                     }}
                 >

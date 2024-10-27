@@ -67,7 +67,8 @@ const Sidebar = () => {
 
                 </Link>
             </div>
-            {/* @ts-ignore */}
+
+            {/* @ts-expect-error */}
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>
     );

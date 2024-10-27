@@ -31,7 +31,7 @@ const steps = [
 const HowItWorks = () => {
     return (
 
-        <div className="mx-auto px-4 py-8 bg-gray-100 rounded-lg shadow-md">
+        <>
             <Timeline
                 mode="alternate"
                 items={steps.map((step, index) => ({
@@ -45,7 +45,7 @@ const HowItWorks = () => {
                     )
                 }))}
             />
-        </div>
+        </>
     );
 
 

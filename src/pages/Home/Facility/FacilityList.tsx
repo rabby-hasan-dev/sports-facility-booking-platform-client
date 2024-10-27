@@ -12,7 +12,7 @@ const FacilityList = ({ filteredFacilities, isFetching }: TFacilityProps) => {
 
 
     return (
-        <div  className=" max-w-7xl mx-auto justify-around  grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  2xl:grid-cols-5 gap-8  ">
+        <div className="justify-around  grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4  gap-4  ">
 
             {
                 isFetching ? <Spin size="large" /> : null

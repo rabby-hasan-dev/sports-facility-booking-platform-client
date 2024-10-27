@@ -2,6 +2,7 @@
 import { Card, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import HeadingComponent from '../../../../components/ui/HeadingComponent';
+import Container from '../../../../components/ui/Container';
 
 const { Meta } = Card;
 
@@ -47,11 +48,11 @@ const offers = [
 
 const OfferSection = () => {
     return (
-        <section className="bg-gray-100 py-12  max-w-screen-xl mx-auto">
-            <div className="container mx-auto px-6">
+        <Container>
+            <div className="container ">
 
                 <HeadingComponent heading=" Special Offers" subHeading="We are provide speciall offer for sports lover" />
-                <div className="grid grid-cols-4 -mx-4">
+                <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {offers.map((offer) => (
                         <div key={offer.id} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
                             <Card
@@ -81,7 +82,9 @@ const OfferSection = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </Container>
+
+
     );
 };
 

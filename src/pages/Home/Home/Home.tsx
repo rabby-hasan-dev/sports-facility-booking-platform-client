@@ -1,23 +1,25 @@
-import FAQ from "./FAQ/FAQ";
+
 import FeaturedFacility from "./FeaturedFacility/FeaturedFacility";
 import HeroSection from "./HeroSection/HeroSection";
 import Testimonial from "./Testimonial/Testimonial";
 import BookingProcessFlow from "./BookingProcessFlow/BookingProcessFlow";
 import OfferSection from "./OfferSection/OfferSection";
+import FAQSection from "./FAQSection/FAQSection";
 
 
 
 const Home = () => {
-
+    // className="flex flex-col justify-center"
     return (
-        <div className="space-y-10">
+        <div>
 
             <HeroSection></HeroSection>
             <BookingProcessFlow></BookingProcessFlow>
             <FeaturedFacility></FeaturedFacility>
             <OfferSection />
-            <FAQ></FAQ>
+            <FAQSection />
             <Testimonial></Testimonial>
+
         </div>
     );
 };

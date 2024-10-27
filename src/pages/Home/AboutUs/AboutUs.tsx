@@ -6,7 +6,7 @@ import TeamSection from "./TeamSection";
 
 const AboutUs = () => {
     return (
-        <div>
+        <div className="mx-[50px] " >
             <MissionStatement />
             <TeamSection />
             <HistoryMileStone />

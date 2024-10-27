@@ -9,6 +9,7 @@ import { useCurrentPage, usePageSize, usePriceRange, useSearchTerm } from "../..
 import FacilityPagination from "./FacilityPagination";
 import { useEffect, useMemo, useState } from "react";
 import { IFacilities } from "../../../types/faicility.type";
+import Container from "../../../components/ui/Container";
 
 
 
@@ -22,7 +23,7 @@ const HomeFacility = () => {
 
     const filteredFacilities = useMemo(() => {
 
-        return allFacility?.data?.filter((facility:IFacilities) =>
+        return allFacility?.data?.filter((facility: IFacilities) =>
             facility.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             facility.location.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -31,7 +32,7 @@ const HomeFacility = () => {
             ) || [];
 
 
-    }, [allFacility,searchTerm,filters])
+    }, [allFacility, searchTerm, filters])
 
 
 
@@ -43,25 +44,28 @@ const HomeFacility = () => {
     }, [filteredFacilities, currentPage, pageSize])
 
 
-   
+
 
 
     return (
-        <div className="space-y-8 ">
-            <HeadingComponent
-                heading={'Entire Facilities'}
-                subHeading={'Discover and book from our selection of entire facilities.'}
-            ></HeadingComponent>
+        <Container>
 
-            <div className="max-w-7xl mx-auto  flex justify-between items-center">
-                <FSearch ></FSearch>
-                <FFiliter ></FFiliter>
+            <div className="space-y-8  mx-[50px] ">
+                <HeadingComponent
+                    heading={'Entire Facilities'}
+                    subHeading={'Discover and book from our selection of entire facilities.'}
+                ></HeadingComponent>
+
+                <div className="flex justify-between items-center">
+                    <FSearch ></FSearch>
+                    <FFiliter ></FFiliter>
+                </div>
+
+                <FacilityList filteredFacilities={paginatedFacilities} isFetching={isFetching} ></FacilityList>
+                <FacilityPagination filteredFacilities={filteredFacilities}  ></FacilityPagination>
+
             </div>
-
-            <FacilityList filteredFacilities={paginatedFacilities} isFetching={isFetching} ></FacilityList>
-            <FacilityPagination filteredFacilities={filteredFacilities}  ></FacilityPagination>
-
-        </div>
+        </Container>
     );
 };
 

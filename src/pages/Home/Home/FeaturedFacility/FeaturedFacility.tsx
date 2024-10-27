@@ -5,6 +5,7 @@ import { useGetAllFacilityQuery } from "../../../../redux/features/facility/faci
 import { IFacilities } from "../../../../types/faicility.type";
 import { getPoplarFacilities } from "../../../../utils/popularFacilitySort";
 import { useEffect, useMemo, useState } from "react";
+import Container from "../../../../components/ui/Container";
 
 
 const FeaturedFacility = () => {
@@ -28,11 +29,11 @@ const FeaturedFacility = () => {
 
 
     return (
-        <>
-            <div className=" py-12  space-y-8 bg-gray-100 ">
+        <Container>
+            <div className=" container  mx-[50px]  space-y-8 ">
                 <HeadingComponent heading="Popular Facilities" subHeading="Discover and book from our selection of top-rated facilities." />
 
-                <div className="max-w-7xl mx-auto justify-evenly grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5   2xl:grid-cols-5  gap-8">
+                <div className="grid sm:gird-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4">
 
                     {
                         isFetching ? <Spin size="large" /> : null
@@ -40,12 +41,16 @@ const FeaturedFacility = () => {
 
                     {
                         popularFacilities?.map((item: IFacilities) =>
-                            <CardComponent loading={isFetching} key={item._id} id={item._id} name={item.name} image={item.image} description={item.description} ></CardComponent>)
+                            <div key={item._id} className="w-full md:w-1/2 lg:w-1/3 mb-8">
+
+                                <CardComponent loading={isFetching} key={item._id} id={item._id} name={item.name} image={item.image} description={item.description} ></CardComponent>
+                            </div>
+                        )
                     }
                 </div>
             </div>
 
-        </>
+        </Container>
     );
 };
 

@@ -3,14 +3,16 @@
 import { Col, Row } from 'antd';
 import MapCard from './MapCard';
 import ContactForm from './ContactForm';
+import Container from '../../../components/ui/Container';
 
 
 const ContactUs = () => {
 
 
     return (
-        <div className="contact-us-container" style={{ padding: '50px 0', backgroundColor: '#f7f8fa' }}>
-            <div className='max-w-7xl mx-auto'>
+        <Container>
+
+            <div style={{ paddingRight: '50px', paddingLeft: '50px', backgroundColor: '#f7f8fa' }}>
                 <Row gutter={16} justify="center"  >
 
                     {/* contact form */}
@@ -26,7 +28,8 @@ const ContactUs = () => {
                     </Col>
                 </Row>
             </div>
-        </div>
+        </Container>
+        // </div>
     );
 };
 

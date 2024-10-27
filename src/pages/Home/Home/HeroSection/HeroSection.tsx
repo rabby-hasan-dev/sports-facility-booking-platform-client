@@ -2,6 +2,7 @@
 import { Button } from 'antd';
 import heroimg from '../../../../assets/images/heroPic.png'
 import { Link } from 'react-router-dom';
+import Container from '../../../../components/ui/Container';
 
 
 const heroImageStyle = {
@@ -24,18 +25,18 @@ const heroImageStyle = {
 
 const HeroSection = () => {
     return (
-        <div className=' flex justify-center items-center' style={heroImageStyle}  >
-
-
-            <div className='max-w-7xl mx-auto  text-white text-center space-y-5 p-5   '>
-                <h2 className='text-4xl uppercase font-extrabold' >Your Sports, Your Space - Book Now!</h2>
-                <p className='text-lg mb-8'>Experience the ultimate convenience in booking your favorite sports facility. Whether it's a quick game or a scheduled practice, our platform makes it easy to reserve the space you need. With just a few clicks, secure your spot and get ready to play. <br /> Don't wait—your perfect sports facility is just a booking away!</p>
-                <div>
-                    <Link to='/facilities'>
-                        <Button type='primary' >Book Now</Button>
-                    </Link>
+        <div className='flex justify-center items-center' style={heroImageStyle}  >
+            <Container>
+                <div className=' text-white text-center space-y-5 p-5 '>
+                    <h2 className='text-4xl uppercase font-extrabold' >Your Sports, Your Space - Book Now!</h2>
+                    <p className='text-lg mb-8'>Experience the ultimate convenience in booking your favorite sports facility. Whether it's a quick game or a scheduled practice, our platform makes it easy to reserve the space you need. With just a few clicks, secure your spot and get ready to play. <br /> Don't wait—your perfect sports facility is just a booking away!</p>
+                    <div>
+                        <Link to='/facilities'>
+                            <Button type='primary' >Book Now</Button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            </Container>
 
 
 

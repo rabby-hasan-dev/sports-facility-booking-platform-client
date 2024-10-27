@@ -31,7 +31,7 @@ const CreateAdmin = () => {
 
             }
 
-        } catch (error:any) {
+        } catch (error: any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
         }
     }
