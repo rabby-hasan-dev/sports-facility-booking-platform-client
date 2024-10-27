@@ -29,7 +29,7 @@ const FeaturedFacility = () => {
 
     return (
         <>
-            <div className=" my-5 space-y-8  ">
+            <div className=" py-12  space-y-8 bg-gray-100 ">
                 <HeadingComponent heading="Popular Facilities" subHeading="Discover and book from our selection of top-rated facilities." />
 
                 <div className="max-w-7xl mx-auto justify-evenly grid sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5   2xl:grid-cols-5  gap-8">

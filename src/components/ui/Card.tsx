@@ -16,27 +16,28 @@ type TCardProps = {
 const CardComponent = ({ id, loading, image, name, pricePerHour, description }: TCardProps) => {
 
 
-    
+
     return (
         <>
             <Card
+                id={id}
                 loading={loading}
                 hoverable
                 style={{ width: 240 }}
                 cover={<img alt="Facility_image" src={image} />}
-              
+
             >
                 {
-                    description ? <Meta title={`Name: ${name}`} description={description} />
+                    description ? <Meta title={name} description={`${description.slice(0, 50)} ...`} />
                         : <Meta title={name} description={`Price: $ ${pricePerHour} /hour`} />
 
                 }
-              <div className='mt-5'>
-              {
-                description?  <Link to={`/facilities`} ><Button type='primary'  >Book Now</Button></Link>
-                :  <Link to={`/facilities/${id}`} ><Button type='primary' >View Details</Button></Link>
-              }
-              </div>
+                <div className='mt-5'>
+                    {
+                        description ? <Link to={`/facilities`} ><Button type='primary'  >Book Now</Button></Link>
+                            : <Link to={`/facilities/${id}`} ><Button type='primary' >View Details</Button></Link>
+                    }
+                </div>
             </Card>
         </>
     );
