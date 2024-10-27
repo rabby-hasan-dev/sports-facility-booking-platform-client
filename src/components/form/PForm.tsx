@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { Form } from "antd";
@@ -35,7 +36,7 @@ const PForm = ({ onSubmit, children, defaultValues, }: TPropsForm) => {
 
     return (
         <FormProvider  {...methods}>
-            <Form layout="vertical"  onFinish={methods.handleSubmit(submitFormData)}>{children} </Form>
+            <Form layout="vertical" onFinish={methods.handleSubmit(submitFormData)}>{children} </Form>
         </FormProvider>
     );
 };

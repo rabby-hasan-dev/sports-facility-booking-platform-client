@@ -26,6 +26,7 @@ const AvailabilityChecker = ({ facilityId }: TFacilityIdProps) => {
   const { data: bookingChecker, isFetching, error } = useBookingCheckerQuery(params, { skip: !params.length });
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let toastId: any;
     if (isFetching) {
       toastId = toast.loading('Loading ....');

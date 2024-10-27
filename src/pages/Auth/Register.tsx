@@ -1,7 +1,7 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import PForm from "../../components/form/PForm";
 import PInput from "../../components/form/PInput";
-import { Button, Row } from "antd";
+import { Button } from "antd";
 import { USER_ROLE } from "../../constant/userConstant";
 import { useSignupMutation } from "../../redux/features/auth/authApi";
 import { Link, useNavigate } from "react-router-dom";
@@ -31,6 +31,7 @@ const Register = () => {
 
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
 

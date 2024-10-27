@@ -4,7 +4,8 @@ import React from "react";
 
 export type TError = {
     data: {
-        errorMessages:[any]
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        errorMessages: [any]
         message: string;
         stack: string | null;
         success: boolean;

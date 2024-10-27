@@ -4,7 +4,7 @@ import { toast } from "sonner";
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 
-export const uploadImage = async (data:File) => {
+export const uploadImage = async (data: File) => {
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
     let imageUrl;
     const formData = new FormData();
@@ -23,7 +23,8 @@ export const uploadImage = async (data:File) => {
             toast.success('Image process successfull', { id: toastId, duration: 1000 })
             imageUrl = imgURL
         }
-    } catch (error:any) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
         toast.error(error?.data?.message, { id: toastId, duration: 1000 })
 
     }

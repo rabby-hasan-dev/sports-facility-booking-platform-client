@@ -1,7 +1,5 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import PForm from "../../components/form/PForm";
-import PInput from "../../components/form/PInput";
-import { Button, Input, Row, Space, Tooltip } from "antd";
+import { Button, Row, Space, Tooltip } from "antd";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
@@ -39,6 +37,7 @@ const Login = () => {
                 navigate('/')
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
 

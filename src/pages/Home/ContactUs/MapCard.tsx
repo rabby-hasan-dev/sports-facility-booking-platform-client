@@ -27,6 +27,7 @@ const MapCard = () => {
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         {...{ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' } as any}
                     />
                     <Marker position={position}>

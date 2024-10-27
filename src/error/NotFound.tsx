@@ -3,6 +3,7 @@ import { Link, useRouteError } from "react-router-dom";
 
 type TNotFound = {
     data: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     error: any;
     internal: boolean;
     status: number

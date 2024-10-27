@@ -31,6 +31,7 @@ const CreateAdmin = () => {
 
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             toast.error(error?.data?.message, { id: toastId, duration: 2000 })
         }

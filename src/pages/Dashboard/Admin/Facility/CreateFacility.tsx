@@ -31,6 +31,7 @@ const CreateFacility = () => {
                 pricePerHour: Number(data.pricePerHour),
                 image: img
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const res = await createFacility(facilityInfo) as TResponse<any>
             if (res?.data?.success) {
                 toast.success(res?.data?.message)
@@ -44,8 +45,9 @@ const CreateFacility = () => {
 
             }
 
-        } catch (error:any) {
-            
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+
             toast.error(error?.data?.message, { duration: 2000 })
 
 

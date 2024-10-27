@@ -56,14 +56,16 @@ const UpdateFacility = () => {
 
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const res = await updateFacility({ id, data: facilityInfo }) as TResponse<any>
             if (res?.data?.success) {
                 toast.success(res?.data?.message)
             }
             console.log('create facility ', res);
-        } catch (error:any) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             toast.error(error?.data?.message, { duration: 2000 })
-            
+
         }
 
 

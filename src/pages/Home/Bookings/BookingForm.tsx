@@ -34,8 +34,9 @@ const BookingForm = ({ facilityId }: TFacilityIdProps) => {
 
 
 
-        } catch (error:any) {
-          
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+
             toast.error(error?.data?.message)
 
 

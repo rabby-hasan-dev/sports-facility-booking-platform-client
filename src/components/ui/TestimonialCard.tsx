@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-const TestimonialCard = ({ testimonial }:any) => {
+const TestimonialCard = ({ testimonial }: any) => {
     return (
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-md mx-auto">
             <div className="flex items-center space-x-4">
