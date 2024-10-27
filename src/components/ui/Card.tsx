@@ -1,4 +1,4 @@
-import { Button, Card } from 'antd';
+import { Button, Card, Rate } from 'antd';
 import { Link } from 'react-router-dom';
 
 const { Meta } = Card;
@@ -7,15 +7,13 @@ type TCardProps = {
     loading: boolean;
     id?: string;
     name: string;
-    pricePerHour?: number;
+    pricePerHour: number;
     description?: string;
     image: string;
 }
 
 
-const CardComponent = ({ id, loading, image, name, pricePerHour, description }: TCardProps) => {
-
-
+const CardComponent = ({ id, loading, image, name, pricePerHour, }: TCardProps) => {
 
     return (
         <>
@@ -25,18 +23,16 @@ const CardComponent = ({ id, loading, image, name, pricePerHour, description }: 
                 hoverable
                 style={{ width: 240 }}
                 cover={<img alt="Facility_image" src={image} />}
-
             >
-                {
-                    description ? <Meta title={name} description={`${description.slice(0, 50)} ...`} />
-                        : <Meta title={name} description={`Price: $ ${pricePerHour} /hour`} />
+                <Meta title={name} description={`Price: $${pricePerHour} /hour`} />
 
-                }
-                <div className='mt-5'>
-                    {
-                        description ? <Link to={`/facilities`} ><Button type='primary'  >Book Now</Button></Link>
-                            : <Link to={`/facilities/${id}`} ><Button type='primary' >View Details</Button></Link>
-                    }
+                <div className="mt-4 flex items-center justify-between">
+                    <span>Rating:</span>
+                    <Rate allowHalf defaultValue={4.5} />
+                </div>
+
+                <div className="mt-5">
+                    <Link to={`/facilities/${id}`} ><Button type='primary' className="w-full" >Book Now</Button></Link>
                 </div>
             </Card>
         </>

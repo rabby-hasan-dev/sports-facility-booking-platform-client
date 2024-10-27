@@ -30,10 +30,10 @@ const FeaturedFacility = () => {
 
     return (
         <Container>
-            <div className=" container  mx-[50px]  space-y-8 ">
+            <div className=" container space-y-8 ">
                 <HeadingComponent heading="Popular Facilities" subHeading="Discover and book from our selection of top-rated facilities." />
 
-                <div className="grid sm:gird-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4">
+                <div className="px-4  grid sm:gird-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4">
 
                     {
                         isFetching ? <Spin size="large" /> : null
@@ -43,7 +43,7 @@ const FeaturedFacility = () => {
                         popularFacilities?.map((item: IFacilities) =>
                             <div key={item._id} className="w-full md:w-1/2 lg:w-1/3 mb-8">
 
-                                <CardComponent loading={isFetching} key={item._id} id={item._id} name={item.name} image={item.image} description={item.description} ></CardComponent>
+                                <CardComponent loading={isFetching} key={item._id} id={item._id} name={item.name} image={item.image} pricePerHour={item.pricePerHour} ></CardComponent>
                             </div>
                         )
                     }
