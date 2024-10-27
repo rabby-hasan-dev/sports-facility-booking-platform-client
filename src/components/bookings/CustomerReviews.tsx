@@ -1,13 +1,20 @@
 
 import { Rate, List, Avatar, Typography, Divider } from 'antd';
+import { IReview } from './CustomersReviewHome';
 
 const { Title, Text } = Typography;
 
+type TCustomerReviews = {
+    averageRating: number;
+    reviewCount: number
+    reviews: IReview[]
+
+}
 
 
-const CustomerReviews = ({ averageRating, reviewCount, reviews }) => {
+const CustomerReviews = ({ averageRating, reviewCount, reviews }: TCustomerReviews) => {
     return (
-        <div className="customer-reviews">
+        <div className="customer-reviews px-4 lg:px-0 ">
             {/* Overall Rating Section */}
             <div className="overall-rating" style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <Title level={3}>Customer Reviews</Title>

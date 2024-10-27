@@ -1,6 +1,13 @@
 import CustomerReviews from "./CustomerReviews";
 
-const reviews = [
+export interface IReview {
+    name: string;
+    rating: number;
+    comment: string;
+    avatar: string;
+}
+
+const reviews: IReview[] = [
     {
         name: 'John Doe',
         rating: 4.5,
